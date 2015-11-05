@@ -18,8 +18,12 @@
   <body>
     <?php include('content/template/core_header.php'); ?>
     <section>
-      <h1>Mon titre</h1>
-      <p>Lorem Ipsum</p>
+      <form>
+        <label for="pseudo">Pseudo</label> <input type="text" name="pseudo">
+        <label for="pass">Mot de passe</label> <input type="password" name="pass">
+
+        <input type="submit">
+      </form>
     </section>
   </body>
 </html>
