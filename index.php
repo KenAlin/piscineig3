@@ -17,5 +17,9 @@
 
   <body>
     <?php include('content/template/core_header.php'); ?>
+    <section>
+      <h1>Mon titre</h1>
+      <p>Lorem Ipsum</p>
+    </section>
   </body>
 </html>

@@ -4,10 +4,18 @@
   </div>
 
   <div id="header_menu">
-      <a href="#">Accueil</a>
-      <a href="#">Se connecter</a>
-      <a href="#">Jeux</a>
-      <a href="#">Accès admin</a>
+    <?php if ($estConnecte) { ?>
+      <a href="#">Catalogue de jeux</a>
+      <?php if ($estAdmin) { ?>
+        <a href="#">Accès admin</a>
+        <a href="#">Réservations</a>
+        <a href="#">Prêts</a>
+      <?php } else { ?>
+        <a href="#">Réserver</a>
+      <?php }
+    } else { ?>
+      <a href=".">Connectez-vous !</a>
+    <?php } ?>
   </div>
 
 </header>
