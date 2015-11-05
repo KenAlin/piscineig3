@@ -1,4 +1,5 @@
 <?php
+  include('settings.php');
   include('content/template/predoctype.php');
 ?>
 <!doctype html>
@@ -13,7 +14,7 @@
     <title>Ludothèque &bull; Accueil</title>
     <?php include('content/template/html_head.php'); ?>
   </head>
-  
+
   <body>
     <?php include('content/template/core_header.php'); ?>
   </body>
