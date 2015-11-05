@@ -31,4 +31,22 @@ body {
 
 section {
   padding: 0 55px;
+
+}
+
+form {
+  margin: 25px auto;
+  padding: 15px;
+  width: 80%;
+  border: 1px solid black;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  text-align: center;
+  line-height: 115%;
+}
+.labelConnexion {
+  width: 200px;
+  text-align: right;
+  display: inline-block;
+  margin-right: 5px;
 }

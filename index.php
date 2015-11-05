@@ -19,8 +19,9 @@
     <?php include('content/template/core_header.php'); ?>
     <section>
       <form>
-        <label for="pseudo">Pseudo</label> <input type="text" name="pseudo">
-        <label for="pass">Mot de passe</label> <input type="password" name="pass">
+        <label for="pseudo" class="labelConnexion">Pseudo</label><input type="text" name="pseudo"><br>
+        <label for="pass" class="labelConnexion">Mot de passe</label><input type="password" name="pass">
+        <br>
 
         <input type="submit">
       </form>
