@@ -17,6 +17,7 @@
 
   <body>
     <?php include('content/template/core_header.php'); ?>
+<<<<<<< HEAD
     <form>
       Pseudo <input type="text" name="pseudo">
       Mot de passe <input type="password" name="pass">
@@ -24,5 +25,11 @@
     <div>
       
 
+=======
+    <section>
+      <h1>Mon titre</h1>
+      <p>Lorem Ipsum</p>
+    </section>
+>>>>>>> master
   </body>
 </html>
