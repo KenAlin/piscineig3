@@ -17,5 +17,12 @@
 
   <body>
     <?php include('content/template/core_header.php'); ?>
+    <form>
+      Pseudo <input type="text" name="pseudo">
+      Mot de passe <input type="password" name="pass">
+    </form>
+    <div>
+      
+
   </body>
 </html>
