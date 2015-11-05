@@ -26,5 +26,6 @@
         <input type="submit">
       </form>
     </section>
+    <?php include('content/template/footer.php'); ?>
   </body>
 </html>
