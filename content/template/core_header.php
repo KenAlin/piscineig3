@@ -4,7 +4,10 @@
   </div>
 
   <div id="header_menu">
-    Y ajouter des petits boutons, en fonction de si on est connecté ou pas (et longue vie à vos yeux)
+      <a href="#">Accueil</a>
+      <a href="#">Se connecter</a>
+      <a href="#">Jeux</a>
+      <a href="#">Accès admin</a>
   </div>
 
 </header>
