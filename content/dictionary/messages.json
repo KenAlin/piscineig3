@@ -1,18 +1,18 @@
 {
   "formLoginMauvaisMdp":[
     "Mot de passe n'est pas correct. Veuillez réessayer.",
-    1
+    "alerte"
   ],
   "formLoginUtilisateurIntrouvable":[
     "Le nom d'utilisateur saisi est introuvable.",
-    1
+    "alerte"
   ],
   "formIncomplet":[
     "Veuillez saisir toutes les informations demandées.",
-    2
+    "avertissement"
   ],
   "codeQuatre":[
     "Ceci est un message",
-    2
+    "alerte"
   ]
 }

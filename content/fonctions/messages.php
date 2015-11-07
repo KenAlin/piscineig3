@@ -15,7 +15,7 @@
   }
   else {
     $messageUtilisateur = false;
-    $messageImportance = 0;
+    $messageImportance = false;
   }
 
 ?>

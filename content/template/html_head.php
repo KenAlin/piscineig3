@@ -1,5 +1,6 @@
 <meta charset="utf-8">
-<link rel="stylesheet" href="content/ludotheque.css" />
+<link rel="stylesheet" href="content/ludotheque.css">
+<link rel="icon" type="image/png" href="content/img/favicon.png">
 
 <!--
   Ludothèque - Projet piscine IG3

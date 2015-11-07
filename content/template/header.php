@@ -1,6 +1,6 @@
 <header>
   <div id="header_bandeau">
-    Remplacer ce texte par une image (*plz*)
+    <a href="."><img id="logo" src="content/img/logo.png"></a>
   </div>
 
   <div id="header_menu">
