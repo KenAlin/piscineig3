@@ -1,0 +1,17 @@
+{
+  "users":[
+    "catalogue",
+    "jeu",
+    "reserver",
+    "profil",
+    "deconnexion"
+  ],
+  "admin":[
+    "gestionReservations",
+    "gestionMembres",
+    "gestionJeux"
+  ],
+  "nonAdmin":[
+    
+  ]
+}

@@ -1,15 +1,69 @@
 body {
   color: black;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  font-family: sans-serif;
 }
 #header_bandeau {
   width: 100%;
   height: 125px;
-  background-color: darkgreen;
+  background-color: white;
 }
 #header_menu {
   width: 100%;
   height: 35px;
-  background-color: blue;
+  background-color: royalblue;
+  line-height: 35px;
+}
+#header_menu a {
+  display: inline-block;
+  padding: 0 5px;
+  border: 0;
+  height: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+}
+#header_menu a:hover {
+  background-color: lightblue;
+}
+
+section {
+  padding: 0 55px;
+
+}
+
+footer {
+  font-size: 85%;
+  margin: 5px auto;
+  text-align: center;
+}
+
+form {
+  margin: 18px auto;
+  padding: 15px;
+  width: 80%;
+  border: 1px solid black;
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  text-align: center;
+  line-height: 115%;
+  box-shadow: 5px 5px;
+}
+.labelConnexion {
+  width: 200px;
+  text-align: right;
+  display: inline-block;
+  margin-right: 5px;
+}
+.messageUtilisateur {
+  margin: 5px auto;
+  text-align: center;
+  width: 100%;
+  padding: 3px 0;
+  font-weight: bold;
+}
+.message_1 {
+  background-color: crimson;
+  color: white;
 }
