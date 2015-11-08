@@ -4,7 +4,7 @@ function verifieDroits($uc, $admin) {
   // En fonction du useCase demandé, de si l'utilisateur est admin (ou non), renvoie un booléen indiquant si cet utilisateur a bien accès à ce module.
 
   // Les droits sont rangés dans un fichier json à part
-  $jsonDroits = file_get_contents("content/dictionary/droits.php");
+  $jsonDroits = file_get_contents("content/dictionary/droits.json");
   $listeDroits = json_decode($jsonDroits, true);
 
   // Conditions : vérifie les droits

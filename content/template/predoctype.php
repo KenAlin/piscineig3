@@ -56,8 +56,17 @@
     include_once($cheminModulePre);
   }
 
-  // GESTION DES MESSAGES A L'UTILISATEUR
-  include_once("content/fonctions/messages.php");
+  // FONCTIONS AFFICHAGE - Gestion des messages, du menu, etc ...
+  include_once("content/fonctions/display.php");
+  if (isset($codeMessage)) {
+    $renvoiMessage = gestionMessage($codeMessage);
+    $messageUtilisateur = $renvoiMessage[0];
+    $messageImportance = $renvoiMessage[1];
+  }
+  else {
+    $messageUtilisateur = false;
+    $messageImportance = false;
+  }
 
 
 ?>

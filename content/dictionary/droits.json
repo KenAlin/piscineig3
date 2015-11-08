@@ -9,7 +9,9 @@
   "admin":[
     "gestionReservations",
     "gestionMembres",
-    "gestionJeux"
+    "gestionJeux",
+    "gestionPrets",
+    "admin"
   ],
   "nonAdmin":[
     

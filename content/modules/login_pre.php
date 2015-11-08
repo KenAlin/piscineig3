@@ -20,10 +20,10 @@
       $infosUtilisateur = $requete->fetchAll(PDO::FETCH_ASSOC);
 
       if (count($infosUtilisateur) == 1) {
-        if (password_verify($postPass, $infosUtilisateur[0]["pass"])) {
+        if (password_verify($postPass, $infosUtilisateur[0]["password"])) {
           // Mot de passe valide : l'utilisateur peut se connecter
           $_SESSION['estEnLigne'] = true;
-          $_SESSION['estAdmin'] = bool($infosUtilisateur[0]["admin"]);
+          $_SESSION['estAdmin'] = $infosUtilisateur[0]["estAdmin"];
 
           // Redirection vers le catalogue
           redirection("catalogue");

@@ -26,6 +26,7 @@ body {
   text-transform: uppercase;
   color: white;
   font-weight: bold;
+  margin-right: 10px;
 }
 #header_menu a:hover {
   background-color: lightblue;
