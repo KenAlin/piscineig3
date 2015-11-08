@@ -67,8 +67,12 @@ form.loginForm {
 .labelConnexion {
   width: 200px;
   text-align: right;
-  display: inline-block;
   margin-right: 5px;
+  display: inline-block;
+}
+.elementFormLogin {
+  display: inline-block;
+  margin-bottom: 3px;
 }
 .messageUtilisateur {
   margin: 5px auto;
