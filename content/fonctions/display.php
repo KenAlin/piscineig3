@@ -20,22 +20,38 @@ function gestionMessage($codeMessage) {
 function afficheMenu($co, $admin) {
   // Affiche le menu sous la bannière selon le statut de l'utilisateur (connecté ? administrateur ?)
   if ($co) {
-    print '<a href="catalogue">Catalogue de jeux</a>';
+    print '<li><a href="'.$GLOBALS['path_ludo'].'catalogue">Catalogue de jeux</a></li>';
     if ($admin) {
-      print '<a href="admin">Accès admin</a>
-      <a href="gestionMembres">Membres</a>
-      <a href="gestionReservations">Réservations</a>
-      <a href="gestionPrets">Prêts</a>';
+      print '<li><a href="'.$GLOBALS['path_ludo'].'admin">Accès admin</a><li>
+      <li><a href="'.$GLOBALS['path_ludo'].'gestionMembres">Membres</a><li>
+      <li><a href="'.$GLOBALS['path_ludo'].'gestionReservations">Réservations</a><li>
+      <li><a href="'.$GLOBALS['path_ludo'].'gestionPrets">Prêts</a><li>';
     }
     else {
-      print '<a href="reserver">Réserver</a>
-      <a href="profil">Mon profil</a>';
+      print '<li><a href="'.$GLOBALS['path_ludo'].'reserver">Réserver</a><li>
+      <li><a href="'.$GLOBALS['path_ludo'].'profil">Mon profil</a><li>';
     }
-    print '<a href="deconnexion">Se déconnecter</a>';
+    print '<li><a href="'.$GLOBALS['path_ludo'].'deconnexion">Se déconnecter</a><li>';
   }
   else {
-    print '<a href=".">Connectez-vous !</a>';
+    print '<li><a href="'.$GLOBALS['path_ludo'].'Connectez-vous !</a><li>';
   }
+}
+
+function choixCouleur($ch, $shuffle = false) {
+  // Renvoie une couleur propre à la chaine en paramètre
+  $couleurs = array("blue", "teal", "green", "purple", "deep-purple", "indigo", "red", "pink", "light-green", "orange", "light-blue", "cyan", "deep-orange", "brown", "blue-grey", "amber");
+
+  if ($shuffle) {
+    // Si le paramètre "shuffle" est sur true, on mélange les couleurs ! (Deux fois pour être sûr ...)
+    shuffle($couleurs);
+    shuffle($couleurs);
+  }
+
+  $crypt = substr(sha1($ch), 0, 8);
+  $represente = abs(intval($crypt)) % count($couleurs);
+  return $couleurs[$represente];
+  //return $represente;
 }
 
 ?>

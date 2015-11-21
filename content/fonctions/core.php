@@ -23,4 +23,9 @@ function redirection($uc) {
   header("Location: {$uc}");
 }
 
+function corrigeChemins($ucO, $ucP) {
+  if ($ucO) echo "../";
+  if ($ucP) echo "../";
+}
+
 ?>

@@ -4,53 +4,23 @@ body {
   margin: 0 auto;
   font-family: sans-serif;
 }
-#header_bandeau {
-  width: 100%;
-  height: 125px;
-  line-height: 125px;
-  background: url('img/origami.jpg') no-repeat;
-  background-size: cover;
+p {
+  margin: 0 0 0.5em 0;
 }
-#header_menu {
-  width: 100%;
-  height: 35px;
-  background-color: #00A0B0;
-  line-height: 35px;
-}
-#header_menu a {
-  display: inline-block;
-  padding: 0 5px;
-  border: 0;
-  height: 100%;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: white;
-  font-weight: bold;
-  margin-right: 10px;
-}
-#header_menu a:hover {
-  background-color: lightblue;
-  color: black;
-}
-#header_menu a:first-child {
-  margin-left: 35px;
+nav {
+  height: 60px;
 }
 #logo {
-  display: inline-block;
-  height: 100px;
-  vertical-align: middle;
-  margin-left: 35px;
+  height: 45px;
+  margin: 10px 20px 0 0;
+}
+.card .card-title {
+  font-size: 22px;
 }
 
 section {
   padding: 0 55px;
 
-}
-
-footer {
-  font-size: 85%;
-  margin: 5px auto;
-  text-align: center;
 }
 
 form.loginForm {

@@ -44,6 +44,25 @@
     else { $useCase = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
   }
 
+  // OPTION ALPHABETIQUE - Passage en get de l'option du module (catégorie du catalogue ...)
+  if (isset($_GET["ucO"])) {
+    $useCaseOption = htmlentities($_GET["ucO"]);
+  }
+  else {
+    // Sinon, on utilise des valeurs par défaut
+    $useCaseOption = false;
+  }
+
+  // OPTION NUMERIQUE - Passage en get de la page (numéro de page du catalogue ...)
+  if (isset($_GET["opt"])) {
+    $useCasePage = htmlentities($_GET["opt"]);
+  }
+  else {
+    // Sinon, on utilise des valeurs par défaut
+    $useCasePage = false;
+  }
+
+
   // ACTION - A-t-on quelque chose en paramètre POST ? (récupération d'un formulaire)
   if (isset($_POST["action"])) { $actionPost = htmlentities($_POST["action"]); }
   else { $actionPost = false; }

@@ -6,7 +6,7 @@
   if ($actionPost == "connexion") {
     // On arrive depuis le formulaire : on va sécuriser quelques données ...
     if (isset($_POST["pseudo"])) {
-      $postPseudo = trim(htmlentities($_POST["pseudo"]));
+      $postPseudo = strtolower(trim(htmlentities($_POST["pseudo"])));
     } else { $postPseudo = false; }
     if (isset($_POST["pass"])) {
       $postPass = trim(htmlentities($_POST["pass"]));
@@ -41,4 +41,11 @@
       $codeMessage = "formIncomplet";
     }
   }
+
+  // Obtention nombre total de jeux (pour la pagination)
+  $sql = 'SELECT count(*) FROM ludo_jeux;';
+  $requete = $bd->prepare($sql);
+  $requete->execute(array(':id' => 0));
+  $compteJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $compteJeux = $compteJeux[0]["count(*)"];
 ?>
