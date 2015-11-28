@@ -29,10 +29,10 @@
     <div class="card <?php echo choixCouleur($jeu["nom"].$jeu["année"]); ?> lighten-2">
       <div class="card-content">
         <span class="card-title"><?php echo $jeu["nom"]; ?></span>
-        <p>DESCRIPTION</p>
+        <p><?php echo substr($jeu["description"], 0, 200)."[...]"; ?></p>
       </div>
       <div class="card-action">
-        <a href="#" class="white-text accent-4">Fiche du jeu</a>
+        <a href="<?php echo corrigeChemins($useCaseOption, $useCasePage); echo "jeu/".$jeu["id"]; ?>" class="white-text accent-4">Fiche du jeu</a>
       </div>
     </div>
   </div>
