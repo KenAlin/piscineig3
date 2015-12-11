@@ -1,6 +1,6 @@
 {
   "formLoginMauvaisMdp":[
-    "Mot de passe n'est pas correct. Veuillez réessayer.",
+    "Le mot de passe saisi est invalide. Veuillez réessayer.",
     "alerte"
   ],
   "formLoginUtilisateurIntrouvable":[

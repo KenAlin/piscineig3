@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteBase /beta/piscine/beta_20/
+RewriteBase /beta/piscine/master/
 
 # Si on ne demande pas un fichier ou dossier qui existe déja, on considère qu'il s'agit de
 # index.php?uc=<nom_demandé>&opt=<option>

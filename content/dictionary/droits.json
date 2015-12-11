@@ -2,7 +2,6 @@
   "users":[
     "catalogue",
     "jeu",
-    "reserver",
     "profil",
     "deconnexion"
   ],
@@ -14,6 +13,6 @@
     "admin"
   ],
   "nonAdmin":[
-    
+    "reserver"
   ]
 }
