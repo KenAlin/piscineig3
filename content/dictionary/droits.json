@@ -10,7 +10,8 @@
     "gestionMembres",
     "gestionJeux",
     "gestionPrets",
-    "admin"
+    "admin",
+    "listeMembres"
   ],
   "nonAdmin":[
     "reserver"
