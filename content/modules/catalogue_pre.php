@@ -2,8 +2,8 @@
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Catalogue des jeux";
 
-  if ($useCasePage) {
-    $pageDemande = intval($useCasePage);
+  if ($getParamDeux) {
+    $pageDemande = intval($getParamDeux);
   }
   else {
     $pageDemande = 1;
@@ -22,16 +22,6 @@
   // Est-ce que la page demandée existe ?
   if ($pageDemande > $nbPagesCatalogue || $pageDemande < 1) {
     $pageDemande = 1;
-  }
-
-  function corrigeAdressePagination($ucO) {
-    if ($ucO) {
-      $renvoi = $GLOBALS['path_ludo'] . "catalogue/{$ucO}/";
-    }
-    else {
-      $renvoi = $GLOBALS['path_ludo'] . "catalogue/";
-    }
-    return $renvoi;
   }
 
   $offsetJeux = ($pageDemande - 1)*33+1;

@@ -1,4 +1,10 @@
 {
+  "all":[
+    "about"
+  ],
+  "guests" :[
+    "login"
+  ],
   "users":[
     "catalogue",
     "jeu",
@@ -11,7 +17,7 @@
     "gestionJeux",
     "gestionPrets",
     "admin",
-    "listeMembres"
+    "creerMembre"
   ],
   "nonAdmin":[
     "reserver"

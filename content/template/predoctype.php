@@ -22,13 +22,68 @@
   if (isset($_SESSION['estEnLigne'])) {
     $estConnecte = $_SESSION['estEnLigne']; // Soit true, soit false
   }
-  else { $estConnecte = false; $_SESSION['estEnLigne'] = false; }
+  else {
+    $estConnecte = false;
+    $_SESSION['estEnLigne'] = false;
+  }
 
   if (isset($_SESSION['estAdmin'])) {
     $estAdmin = $_SESSION['estAdmin']; // Soit true, soit false
   }
-  else { $estAdmin = false; $_SESSION['estAdmin'] = false; }
+  else {
+    $estAdmin = false;
+    $_SESSION['estAdmin'] = false;
+  }
 
+  // ENREGISTREMENT DANS UN ARRAY - Contient les informations sur le contexte de l'utilisateur
+  if ($estConnecte) {
+    $listeDesDroits = array(true, $estAdmin);
+  }
+  else {
+    $listeDesDroits = array(false, false);
+  }
+
+  // **************************************************************************************
+  if (isset($_GET["uc"])) {
+    // Si un use case est demandé, on le stocke dans $useCase (en le sécurisant un peu ...) ; seulement si l'utilisateur est connecté
+    $useCase = htmlentities($_GET["uc"]);
+
+    // explode : récupère les paramètres séparés par des tirets
+    $parametresGet = explode("-", $useCase);
+
+    // Le nom du module est en premier
+    $getModule = $parametresGet[0];
+
+    // Est-ce qu'on a autre chose ?
+    if (isset($parametresGet[1])) {
+      $getParamUn = $parametresGet[1];
+    }
+    else { $getParamUn = false; }
+
+    if (isset($parametresGet[2])) {
+      $getParamDeux = $parametresGet[2];
+    }
+    else { $getParamDeux = false; }
+
+    // On va ensuite vérifier si on a bien le droit de charger le module ...
+    if (!verifieDroits($getModule, $listeDesDroits)) {
+      // On n'a pas le droit d'utiliser le module demandé : on bascule sur le module par défaut
+      if ($estConnecte) { $getModule = "catalogue"; } // Page par défaut des utilisateurs connectés : le catalogue
+      else { $getModule = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
+      $codeMessage = "pasLeDroitModule";
+    }
+  }
+  else {
+    // Sinon, on utilise des valeurs par défaut
+    if ($estConnecte) { $getModule = "catalogue"; } // Page par défaut des utilisateurs connectés : le catalogue
+    else { $getModule = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
+    $getParamUn = false;
+    $getParamDeux = false;
+  }
+
+
+  // **************************************************************************************
+  /*
   // USE CASE - Passage en paramètre GET du nom du module demandé
   if (isset($_GET["uc"]) && $estConnecte) {
     // Si un use case est demandé, on le stocke dans $useCase (en le sécurisant un peu ...) ; seulement si l'utilisateur est connecté
@@ -61,15 +116,16 @@
     // Sinon, on utilise des valeurs par défaut
     $useCasePage = false;
   }
-
+*/
+  // **************************************************************************************
 
   // ACTION - A-t-on quelque chose en paramètre POST ? (récupération d'un formulaire)
   if (isset($_POST["action"])) { $actionPost = htmlentities($_POST["action"]); }
   else { $actionPost = false; }
 
   // CHARGEMENT DU MODULE
-  $cheminModulePre = "content/modules/{$useCase}_pre.php";
-  $cheminModuleVue = "content/modules/{$useCase}.php";
+  $cheminModulePre = "content/modules/{$getModule}_pre.php";
+  $cheminModuleVue = "content/modules/{$getModule}.php";
   if (file_exists($cheminModulePre)) {
     // On va laisser le module travailler ...
     include_once($cheminModulePre);

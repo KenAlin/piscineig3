@@ -2,8 +2,8 @@
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Fiche de jeu";
 
-  if ($useCasePage) {
-    $jeuDemande = intval($useCasePage);
+  if ($getParamUn) {
+    $jeuDemande = intval($getParamUn);
   }
   else {
     $jeuDemande = 1;

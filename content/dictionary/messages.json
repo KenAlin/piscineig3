@@ -11,8 +11,12 @@
     "Veuillez saisir toutes les informations demandées.",
     "avertissement"
   ],
+  "pasLeDroitModule":[
+    "Vous n'avez pas l'autorisation d'accéder à cette page.",
+    "alerte"
+  ],
   "codeQuatre":[
-    "Ceci est un message",
+    "message",
     "alerte"
   ]
 }

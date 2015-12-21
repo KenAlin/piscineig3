@@ -20,21 +20,21 @@ function gestionMessage($codeMessage) {
 function afficheMenu($co, $admin) {
   // Affiche le menu sous la bannière selon le statut de l'utilisateur (connecté ? administrateur ?)
   if ($co) {
-    print '<li><a href="'.$GLOBALS['path_ludo'].'catalogue">Catalogue de jeux</a></li>';
+    print '<li><a href="catalogue">Catalogue de jeux</a></li>';
     if ($admin) {
-      print '<li><a href="'.$GLOBALS['path_ludo'].'admin">Accès admin</a><li>
-      <li><a href="'.$GLOBALS['path_ludo'].'gestionMembres">Membres</a><li>
-      <li><a href="'.$GLOBALS['path_ludo'].'gestionReservations">Réservations</a><li>
-      <li><a href="'.$GLOBALS['path_ludo'].'gestionPrets">Prêts</a><li>';
+      print '<li><a href="admin">Accès admin</a><li>
+      <li><a href="gestionMembres">Membres</a><li>
+      <li><a href="gestionReservations">Réservations</a><li>
+      <li><a href="gestionPrets">Prêts</a><li>';
     }
     else {
-      print '<li><a href="'.$GLOBALS['path_ludo'].'reserver">Réserver</a><li>
-      <li><a href="'.$GLOBALS['path_ludo'].'profil">Mon profil</a><li>';
+      print '<li><a href="reserver">Réserver</a><li>
+      <li><a href="profil">Mon profil</a><li>';
     }
-    print '<li><a href="'.$GLOBALS['path_ludo'].'deconnexion">Se déconnecter</a><li>';
+    print '<li><a href="deconnexion">Se déconnecter</a><li>';
   }
   else {
-    print '<li><a href="'.$GLOBALS['path_ludo'].'Connectez-vous !</a><li>';
+    print '<li><a href="Connectez-vous !</a><li>';
   }
 }
 

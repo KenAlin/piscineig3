@@ -1,15 +1,11 @@
 RewriteEngine on
-RewriteBase /beta/piscine/master/
+RewriteBase /beta/piscine/beta_20/
 
 # Si on ne demande pas un fichier ou dossier qui existe déja, on considère qu'il s'agit de
 # index.php?uc=<nom_demandé>&opt=<option>
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-# RewriteRule ^([A-Za-z0-9]+)/?$ ?uc=$1 [L]
-RewriteRule ^([a-zA-Z]+)$ index.php?uc=$1 [L]
-RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)$ index.php?uc=$1&ucO=$2 [L]
-RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)/([0-9]+)$ index.php?uc=$1&ucO=$2&opt=$3 [L]
-RewriteRule ^([a-zA-Z]+)/([0-9]+)$ index.php?uc=$1&opt=$2 [L]
+RewriteRule ^([a-zA-Z0-9\-]+)$ index.php?uc=$1 [L]
 
 # Désactive le listage des répertoires
 Options -Indexes

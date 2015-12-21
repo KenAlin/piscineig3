@@ -14,9 +14,9 @@
   <!-- AFFICHAGE BOUTON CATEGORIES -->
   <div class="col s12 m3 l3 center">
     <ul id="dropdownCat" class="dropdown-content">
-      <li><a href="<?php echo corrigeAdressePagination($useCaseOption); echo "5"; ?>">Stratégie<span class="badge">222</span></a></li>
-      <li><a href="<?php echo corrigeAdressePagination($useCaseOption); echo "5"; ?>">Cartes<span class="badge">222</span></a></li>
-      <li><a href="<?php echo corrigeAdressePagination($useCaseOption); echo "5"; ?>">Famille<span class="badge">222</span></a></li>
+      <li><a href="5">Stratégie<span class="badge">222</span></a></li>
+      <li><a href="5">Cartes<span class="badge">222</span></a></li>
+      <li><a href="5">Famille<span class="badge">222</span></a></li>
     </ul>
     <a class="btn dropdown-button green lighten-1" href="#" data-activates="dropdownCat">Par catégorie <i class="mdi-navigation-arrow-drop-down right"></i></a>
   </div>
@@ -33,7 +33,7 @@
         <p><?php echo substr($jeu["description"], 0, 200).$suffixe_desc; ?></p>
       </div>
       <div class="card-action">
-        <a href="<?php echo corrigeChemins($useCaseOption, $useCasePage); echo "jeu/".$jeu["id"]; ?>" class="white-text accent-4">Fiche du jeu</a>
+        <a href="jeu-<?php echo $jeu["id"]; ?>" class="white-text accent-4">Fiche du jeu</a>
       </div>
     </div>
   </div>
@@ -43,17 +43,17 @@
 <div class="row center">
   <ul class="pagination">
     <li class="<?php if($pageDemande == 1) echo "disabled"; else echo "waves-effect"; ?>">
-      <a href="#1"><i class="fa fa-chevron-left"></i></a>
+      <a href="catalogue--1"><i class="fa fa-chevron-left"></i></a>
     </li>
 
     <?php for($i=1 ; $i<=$nbPagesCatalogue ; $i++) { ?>
       <li class="<?php if($pageDemande == $i) echo "active ".choixCouleur($i, true); else echo "waves-effect"; ?>">
-        <a href="<?php echo corrigeAdressePagination($useCaseOption); echo $i; ?>"><?php echo $i; ?></a>
+        <a href="catalogue--<?php echo $i; ?>"><?php echo $i; ?></a>
       </li>
     <?php } ?>
 
     <li class="<?php if($pageDemande == $nbPagesCatalogue) echo "disabled"; else echo "waves-effect"; ?>">
-      <a href="#<?php echo $nbPagesCatalogue; ?>"><i class="fa fa-chevron-right"></i></a>
+      <a href="catalogue--<?php echo $nbPagesCatalogue; ?>"><i class="fa fa-chevron-right"></i></a>
     </li>
   </ul>
 </div>
