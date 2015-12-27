@@ -24,9 +24,12 @@
           // Mot de passe valide : l'utilisateur peut se connecter
           $_SESSION['estEnLigne'] = true;
           $_SESSION['estAdmin'] = $infosUtilisateur[0]["estAdmin"];
+          $_SESSION['pseudo'] = $infosUtilisateur[0]["pseudo"];
+          $_SESSION['idMembre'] = $infosUtilisateur[0]["id"];
 
-          // Redirection vers le catalogue
-          redirection("catalogue");
+          // Redirection vers la page par défaut
+          if ($_SESSION['estAdmin']) redirection("admin");
+          else redirection("catalogue");
         }
         else {
           // Mot de passe invalide !

@@ -1,10 +1,10 @@
 {
   "formLoginMauvaisMdp":[
-    "Le mot de passe saisi est invalide. Veuillez réessayer.",
+    "Le mot de passe saisi est invalide. Veuillez réessayer, ou contacter un responsable de la ludothèque pour réinitialiser votre mot de passe.",
     "alerte"
   ],
   "formLoginUtilisateurIntrouvable":[
-    "Le nom d'utilisateur saisi est introuvable.",
+    "Le nom d'utilisateur saisi est introuvable. Contactez un responsable de la ludothèque si vous avez oublié votre pseudonyme.",
     "alerte"
   ],
   "formIncomplet":[
@@ -12,7 +12,19 @@
     "avertissement"
   ],
   "pasLeDroitModule":[
-    "Vous n'avez pas l'autorisation d'accéder à cette page.",
+    "Vous n'avez pas l'autorisation d'accéder à cette page. Veuillez vous connecter avec un compte autorisé.",
+    "alerte"
+  ],
+  "jeuInvalide":[
+    "Vous essayez d'accéder à une page concernant un jeu qui n'existe pas. Paradoxal, n'est-ce pas ?",
+    "alerte"
+  ],
+  "pasDeParametre":[
+    "Cette page demande un paramètre. Une utilisation normale ne devrait pas déclencher l'affichage de ce message. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
+    "alerte"
+  ],
+  "profilInvalide":[
+    "Le profil demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
     "alerte"
   ],
   "codeQuatre":[

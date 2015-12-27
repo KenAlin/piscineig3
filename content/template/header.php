@@ -9,7 +9,7 @@
 
   <nav class="teal lighten-1" role="navigation">
     <div class="nav-wrapper container">
-      <a href="." class="brand-logo"><img id="logo" src="content/img/logo.png"></a>
+      <a href="." class="brand-logo"><img id="logo" src="content/img/homoludens.png"></a>
       <ul class="right hide-on-med-and-down">
   			<?php afficheMenu($estConnecte, $estAdmin); ?>
   		</ul>

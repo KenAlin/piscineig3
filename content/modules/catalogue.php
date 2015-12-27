@@ -11,14 +11,27 @@
 </div>
 
 <div class="row">
-  <!-- AFFICHAGE BOUTON CATEGORIES -->
   <div class="col s12 m3 l3 center">
+    <!-- AFFICHAGE BOUTON CATEGORIES -->
     <ul id="dropdownCat" class="dropdown-content">
       <li><a href="5">Stratégie<span class="badge">222</span></a></li>
       <li><a href="5">Cartes<span class="badge">222</span></a></li>
       <li><a href="5">Famille<span class="badge">222</span></a></li>
     </ul>
     <a class="btn dropdown-button green lighten-1" href="#" data-activates="dropdownCat">Par catégorie <i class="mdi-navigation-arrow-drop-down right"></i></a>
+  </div>
+
+  <div class="input-field col s12 m3 l3 valign-wrapper">
+    <!-- AFFICHAGE BARRE RECHERCHE -->
+    <form class="">
+      <i class="material-icons prefix">search</i>
+      <input id="recherche" type="text" class="validate"
+        data-autocomplete="content/remote/autoCatalogue"
+        data-autocomplete-no-result="Aucun jeu correspondant !"
+        data-autocomplete-param-name="uc"
+        autocomplete="off">
+      <label for="recherche">Chercher un jeu</label>
+    </form>
   </div>
 </div>
 

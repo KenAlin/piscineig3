@@ -14,110 +14,13 @@
   include_once('content/fonctions/core.php');
 
   // CONNEXION A LA BD - Variable $bd est notre base de données
-  // Paramètres de connexion dans le fichier settings.php
-  try { $bd = new PDO("mysql:host={$bdHost};dbname={$bdName};charset=utf8", "{$bdLogin}", "{$bdPass}"); }
-  catch (Exception $e) { die('Erreur à la connexion à la base de données : ' . $e->getMessage()); }
+  include_once('content/fonctions/connectBD.php');
 
   // LECTURE DE LA SESSION - Simplifie la lecture du code
-  if (isset($_SESSION['estEnLigne'])) {
-    $estConnecte = $_SESSION['estEnLigne']; // Soit true, soit false
-  }
-  else {
-    $estConnecte = false;
-    $_SESSION['estEnLigne'] = false;
-  }
+  include_once('content/fonctions/lectureSession.php');
 
-  if (isset($_SESSION['estAdmin'])) {
-    $estAdmin = $_SESSION['estAdmin']; // Soit true, soit false
-  }
-  else {
-    $estAdmin = false;
-    $_SESSION['estAdmin'] = false;
-  }
-
-  // ENREGISTREMENT DANS UN ARRAY - Contient les informations sur le contexte de l'utilisateur
-  if ($estConnecte) {
-    $listeDesDroits = array(true, $estAdmin);
-  }
-  else {
-    $listeDesDroits = array(false, false);
-  }
-
-  // **************************************************************************************
-  if (isset($_GET["uc"])) {
-    // Si un use case est demandé, on le stocke dans $useCase (en le sécurisant un peu ...) ; seulement si l'utilisateur est connecté
-    $useCase = htmlentities($_GET["uc"]);
-
-    // explode : récupère les paramètres séparés par des tirets
-    $parametresGet = explode("-", $useCase);
-
-    // Le nom du module est en premier
-    $getModule = $parametresGet[0];
-
-    // Est-ce qu'on a autre chose ?
-    if (isset($parametresGet[1])) {
-      $getParamUn = $parametresGet[1];
-    }
-    else { $getParamUn = false; }
-
-    if (isset($parametresGet[2])) {
-      $getParamDeux = $parametresGet[2];
-    }
-    else { $getParamDeux = false; }
-
-    // On va ensuite vérifier si on a bien le droit de charger le module ...
-    if (!verifieDroits($getModule, $listeDesDroits)) {
-      // On n'a pas le droit d'utiliser le module demandé : on bascule sur le module par défaut
-      if ($estConnecte) { $getModule = "catalogue"; } // Page par défaut des utilisateurs connectés : le catalogue
-      else { $getModule = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
-      $codeMessage = "pasLeDroitModule";
-    }
-  }
-  else {
-    // Sinon, on utilise des valeurs par défaut
-    if ($estConnecte) { $getModule = "catalogue"; } // Page par défaut des utilisateurs connectés : le catalogue
-    else { $getModule = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
-    $getParamUn = false;
-    $getParamDeux = false;
-  }
-
-
-  // **************************************************************************************
-  /*
-  // USE CASE - Passage en paramètre GET du nom du module demandé
-  if (isset($_GET["uc"]) && $estConnecte) {
-    // Si un use case est demandé, on le stocke dans $useCase (en le sécurisant un peu ...) ; seulement si l'utilisateur est connecté
-    $useCase = htmlentities($_GET["uc"]);
-    if (!verifieDroits($useCase, $estAdmin)) {
-      // On n'a pas le droit d'utiliser le module demandé : on bascule sur le catalogue (qu'on est sûr de pouvoir utiliser si on est connecté !)
-      $useCase = "catalogue";
-    }
-  }
-  else {
-    // Sinon, on utilise des valeurs par défaut
-    if ($estConnecte) { $useCase = "catalogue"; } // Page par défaut des utilisateurs connectés : le catalogue
-    else { $useCase = "login"; } // Page par défaut des utilisateurs non connectés : le formulaire de login
-  }
-
-  // OPTION ALPHABETIQUE - Passage en get de l'option du module (catégorie du catalogue ...)
-  if (isset($_GET["ucO"])) {
-    $useCaseOption = htmlentities($_GET["ucO"]);
-  }
-  else {
-    // Sinon, on utilise des valeurs par défaut
-    $useCaseOption = false;
-  }
-
-  // OPTION NUMERIQUE - Passage en get de la page (numéro de page du catalogue ...)
-  if (isset($_GET["opt"])) {
-    $useCasePage = htmlentities($_GET["opt"]);
-  }
-  else {
-    // Sinon, on utilise des valeurs par défaut
-    $useCasePage = false;
-  }
-*/
-  // **************************************************************************************
+  // Gstion des use cases
+  include_once('content/fonctions/gestionUC.php');
 
   // ACTION - A-t-on quelque chose en paramètre POST ? (récupération d'un formulaire)
   if (isset($_POST["action"])) { $actionPost = htmlentities($_POST["action"]); }

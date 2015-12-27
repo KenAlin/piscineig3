@@ -59,3 +59,6 @@ form.loginForm {
 .message_avertissement {
   background-color: #EDC951;
 }
+.autocomplete {
+  z-index: 5;
+}

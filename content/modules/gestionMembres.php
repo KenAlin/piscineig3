@@ -37,9 +37,9 @@
           <td><?php echo $membre["nom"]; ?></td>
           <td><?php echo $membre["prenom"]; ?></td>
           <td>
-            <a href="editMembre-<?php echo $membre["pseudo"]; ?>"><i class="fa fa-user"></i></a>
-            <a href="editMotDePasse-<?php echo $membre["pseudo"]; ?>"><i class="fa fa-key"></i></a>
-            <a href="supprMembre-<?php echo $membre["pseudo"]; ?>"><i class="fa fa-close"></i></a>
+            <a href="profil-<?php echo $membre["id"]; ?>"><i class="fa fa-user"></i></a>
+            <a href="resetMotDePasse-<?php echo $membre["id"]; ?>"><i class="fa fa-key"></i></a>
+            <a href="supprMembre-<?php echo $membre["id"]; ?>"><i class="fa fa-close"></i></a>
           </td>
         </tr>
         <?php } ?>

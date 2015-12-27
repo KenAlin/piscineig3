@@ -20,7 +20,8 @@
         </ul>
       </div>
       <div class="card-action">
-        <a class="green-text text-darken-3" href="#">Réserver</a>
+        <a class="green-text text-darken-3" href="reserver-<?php echo $jeuDemande;?>">Réserver</a>
+        <?php if ($_SESSION['estAdmin']) echo "<a class=\"green-text text-darken-3\" href=\"editJeu-{$jeuDemande}\">Modifier</a>";?>
       </div>
     </div>
   </div>
