@@ -24,7 +24,7 @@
     if (isset($listeJeux[0])) {
       $renvoi = array();
       foreach ($listeJeux as $jeu) {
-        $link = "/jeu-{$jeu["id"]}";
+        $link = "jeu-{$jeu["id"]}";
         $renvoi[$link] = $jeu["nom"];
       }
       echo jsonEncode($renvoi);
