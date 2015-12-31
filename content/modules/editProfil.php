@@ -49,9 +49,22 @@
           <div class="card-content">
             <span class="card-title">Propriétés</span>
             <p>Par mesure de sécurité, vous ne pouvez pas vous passer vous-même en simple membre.</p>
+            <p>Adhésion valide jusqu'au <?php echo strftime("%A %e %B %Y", $infosUser["fin_abo"]); ?></p>
             <div class="input-field">
               <input type="checkbox" class="filled-in" name="admin" value="1" id="formAdmin" <?php if ($infosUser["estAdmin"]) echo 'checked="checked"'; ?>>
               <label for="formAdmin">Est administrateur</label>
+            </div>
+            <br>
+            <div class="input-field">
+              <select id="formRenouvellement" type="text" name="renouvellement">
+                <option value="0" selected>Conserver tel quel</option>
+                <option value="1">Fin dans une semaine (7 jours)</option>
+                <option value="2">Fin dans un mois (31 jours)</option>
+                <option value="3">Fin dans trois mois (91 jours)</option>
+                <option value="4">Fin dans un an (365 jours)</option>
+                <option value="5">Supprimer l'adhésion</option>
+              </select>
+              <label>Date de fin de l'adhésion</label>
             </div>
           </div>
       </div>

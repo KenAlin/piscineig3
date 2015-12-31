@@ -35,6 +35,28 @@
       $requete->bindValue(':telephone', $postTelephone, PDO::PARAM_INT);
       $requete->bindValue(':iduser', $profilDemande, PDO::PARAM_INT);
       $requete->execute();
+
+      // Et on vérifie si il faut toucher à l'adhésion
+      if (isset($_POST["renouvellement"])) {
+        $postAdh = intval($_POST["renouvellement"]);
+      } else { $postAdh = 0; }
+
+      if ($postAdh > 0) {
+        if ($postAdh == 5) $nbJoursAdh = 0; // On demande la suppression immédiate de son adhésion
+        else if ($postAdh == 4) $nbJoursAdh = 365;
+        else if ($postAdh == 3) $nbJoursAdh = 91;
+        else if ($postAdh == 2) $nbJoursAdh = 31;
+        else if ($postAdh == 1) $nbJoursAdh = 7;
+
+        $finAbo = time() + 60*60*24*$nbJoursAdh;
+        $sql = 'UPDATE ludo_utilisateurs SET fin_abo=:fin WHERE id=:iduser;';
+        $requete = $bd->prepare($sql);
+        $requete->bindValue(':fin', $finAbo, PDO::PARAM_INT);
+        $requete->bindValue(':iduser', $profilDemande, PDO::PARAM_INT);
+        $requete->execute();
+      }
+
+
       $codeMessage = "formEditUserOK";
     }
     // Fin de traitement de la fiche
