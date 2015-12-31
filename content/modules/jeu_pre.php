@@ -32,6 +32,7 @@
     }
     else {
       $infosJeu = null;
+      $aDesExtensions = false;
       $codeMessage = "jeuInvalide";
     }
 
@@ -39,6 +40,7 @@
   else {
     $jeuDemande = -1;
     $infosJeu = null;
+    $aDesExtensions = false;
     $codeMessage = "pasDeParametre";
   }
 
