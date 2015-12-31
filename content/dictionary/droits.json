@@ -16,7 +16,7 @@
     "gestionPrets",
     "gestionMembres", "creerMembre", "supprMembre", "resetMotDePasse", "editProfil",
     "gestionJeux", "creerJeu", "supprJeu", "editJeu",
-    "gestionExemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",
+    "exemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",
     "admin"
   ],
   "nonAdmin":[

@@ -17,9 +17,9 @@
 
       if (count($resultsql) == 0) {
         // Ok, pas de membre qui porte ce pseudo ! On va l'ajouter, ok ?
-        $sql = 'INSERT INTO  ludo_utilisateurs (pseudo, password, estAdmin)  VALUES (:pseudo, :passwrd, :admin);';
+        $sql = 'INSERT INTO  ludo_utilisateurs (pseudo, password, estAdmin, membre_depuis)  VALUES (:pseudo, :passwrd, :admin, :maintenant);';
         $requete = $bd->prepare($sql);
-        $requete->execute(array(':pseudo' => $postPseudo, ':passwrd' => password_hash("HomoLudens", PASSWORD_DEFAULT), ':admin' => false));
+        $requete->execute(array(':pseudo' => $postPseudo, ':passwrd' => password_hash("HomoLudens", PASSWORD_DEFAULT), ':admin' => false, ':maintenant' => time()));
         $codeMessage = "formCreerUserOK";
       }
       else {

@@ -7,12 +7,13 @@
         <ul>
           <?php if($profil["estAdmin"]) echo "<li class=\"red-text text-darken-2\"><b>Compte administrateur !</b></li>"; ?>
           <?php if($profil["fin_abo"] < time()) echo "<li class=\"blue-text text-darken-2\"><b>Adhésion invalide à ce jour !</b></li>"; ?>
-          <li><b>Numéro de compte :</b> <?php echo $profil["id"]; ?></li>
+          <li><i class="fa fa-dashboard"></i> <b>Numéro de compte :</b> <?php echo $profil["id"]; ?></li>
+          <li><i class="fa fa-calendar-o"></i> <b>Membre depuis</b> le <?php echo strftime("%A %e %B %Y", $profil["membre_depuis"]); ?></li>
           <li><b>Nom :</b> <?php echo $profil["nom"]; ?></li>
           <li><b>Prénom :</b> <?php echo $profil["prenom"]; ?></li>
-          <li><b>Mail de contact :</b> <?php echo $profil["mail"]; ?></li>
-          <li><b>Téléphone :</b> <?php echo $profil["telephone"]; ?></li>
-          <li><b>Adhérent jusqu'à :</b> <?php echo strftime("%A %e %B %Y", $profil["fin_abo"]); ?></li>
+          <li><i class="fa fa-envelope-o"></i> <b>Mail de contact :</b> <?php echo $profil["mail"]; ?></li>
+          <li><i class="fa fa-phone"></i> <b>Téléphone :</b> <?php echo $profil["telephone"]; ?></li>
+          <li><i class="fa fa-ticket"></i> <b>Adhérent jusqu'au </b> <?php echo strftime("%A %e %B %Y", $profil["fin_abo"]); ?></li>
         </ul>
       </div>
     </div>

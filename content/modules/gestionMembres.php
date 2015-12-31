@@ -14,6 +14,19 @@
   <div class="col s12 m3 l3 center">
     <a class="btn blue waves-effect waves-light" href="creerMembre">Ajouter un membre <i class="fa fa-plus-circle"></i></a>
   </div>
+
+  <div class="input-field col s12 m6 l6 valign-wrapper">
+    <!-- AFFICHAGE BARRE RECHERCHE -->
+    <form class="">
+      <i class="material-icons prefix">search</i>
+      <input id="recherche" type="text" class="validate"
+        data-autocomplete="content/remote/autoMembres"
+        data-autocomplete-no-result="Aucun membre correspondant !"
+        data-autocomplete-param-name="uc"
+        autocomplete="off">
+      <label for="recherche">Chercher un membre par son pseudo</label>
+    </form>
+  </div>
 </div>
 
 <div class="row">
@@ -32,14 +45,22 @@
       <tbody>
         <?php foreach($listeMembres as $membre) { ?>
         <tr>
-          <td><!-- Afficher un averto si date de renouvellement approche, ou si membre n'est plus abo. --></td>
-          <td><?php echo $membre["pseudo"]; ?></td>
+          <td>
+            <?php if ($membre["fin_abo"] < time()) { ?>
+              <span class="red-text"><i class="fa fa-exclamation tooltipped" data-position="top" data-delay="50" data-tooltip="Adhésion expirée !"></i></span>
+            <?php } else if (($membre["fin_abo"] - 60*60*24*7) < time()) { ?>
+              <span class="amber-text"><i class="fa fa-hourglass-end tooltipped" data-position="top" data-delay="50" data-tooltip="Adhésion expirant dans moins d'une semaine !"></i></span>
+            <?php } ?>
+          </td>
+          <td><?php if ($membre["estAdmin"]) { ?>
+            <span class="blue-grey-text"><i class="fa fa-shield tooltipped" data-position="top" data-delay="50" data-tooltip="Administrateur"></i></span>
+          <?php } echo $membre["pseudo"]; ?></td>
           <td><?php echo $membre["nom"]; ?></td>
           <td><?php echo $membre["prenom"]; ?></td>
           <td>
-            <a href="profil-<?php echo $membre["id"]; ?>"><i class="fa fa-user"></i></a>
-            <a href="resetMotDePasse-<?php echo $membre["id"]; ?>"><i class="fa fa-key"></i></a>
-            <a href="supprMembre-<?php echo $membre["id"]; ?>"><i class="fa fa-close"></i></a>
+            <a class="tooltipped" href="profil-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Aperçu du profil"><i class="fa fa-user"></i></a>
+            <a class="tooltipped" href="resetMotDePasse-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Réinitialiser le mot de passe"><i class="fa fa-key"></i></a>
+            <a class="tooltipped" href="supprMembre-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Supprimer le membre"><i class="fa fa-close"></i></a>
           </td>
         </tr>
         <?php } ?>

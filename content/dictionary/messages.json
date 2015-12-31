@@ -43,6 +43,16 @@
   ],
 
 
+  "formCreerExCBDejaPris":[
+    "Un exemplaire porte déjà ce code barres !",
+    "alerte"
+  ],
+  "formCreerExOK":[
+    "L'exemplaire a bien été ajouté !",
+    "positif"
+  ],
+
+
   "supprJeuOK":[
     "Le jeu a bien été supprimé !",
     "positif"

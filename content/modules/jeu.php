@@ -35,6 +35,7 @@
         <?php if ($estAdmin) { ?>
           <a class="green-text text-darken-3" href="editJeu-<?php echo $jeuDemande; ?>">Modifier la fiche</a>
           <a class="green-text text-darken-3" href="creerJeu-<?php echo $jeuDemande; ?>">Nouvelle extension</a>
+          <a class="green-text text-darken-3" href="exemplaires-<?php echo $jeuDemande; ?>">Gestion des exemplaires</a>
         <?php } ?>
       </div>
     </div>

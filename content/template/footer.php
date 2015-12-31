@@ -43,14 +43,17 @@
 
     $('select').material_select();
 
+    <?php if ( in_array($getModule, array("catalogue")) ) { ?>
     $('.dropdown-button').dropdown({
-        belowOrigin: true, // Displays dropdown below the button
+        belowOrigin: true,
       }
     );
+    <?php } ?>
 
-    $('.tooltipped').tooltip({delay: 50});
+    // $('.tooltipped').tooltip({delay: 50});
 
-    <?php if ($getModule == "catalogue") { ?>
+    <?php if ( in_array($getModule, array("catalogue", "gestionMembres")) ) { ?>
+      /* COPYRIGHT Baptiste Donaux - https://autocomplete-js.com */
       AutoComplete({
           select: function(input, item) {
               window.open(item.children[0].getAttribute("href"), '_blank');

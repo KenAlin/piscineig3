@@ -34,7 +34,7 @@
           <?php } ?>
           <div class="input-field">
             <input id="formAnnee" type="text" name="annee">
-            <label for="formPsformAnneeeudo">Année</label>
+            <label for="formAnnee">Année</label>
           </div>
           <div class="input-field">
             <input id="formEditeur" type="text" name="editeur">
