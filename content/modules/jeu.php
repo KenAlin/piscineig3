@@ -29,7 +29,9 @@
         </ul>
       </div>
       <div class="card-action">
-        <a class="green-text text-darken-3" href="reserver-<?php echo $jeuDemande;?>">Réserver</a>
+        <?php if (!$estAdmin) { ?>
+          <a class="green-text text-darken-3" href="reserver-<?php echo $jeuDemande;?>">Réserver</a>
+        <?php } ?>
         <?php if ($estAdmin) { ?>
           <a class="green-text text-darken-3" href="editJeu-<?php echo $jeuDemande; ?>">Modifier la fiche</a>
           <a class="green-text text-darken-3" href="creerJeu-<?php echo $jeuDemande; ?>">Nouvelle extension</a>
@@ -73,8 +75,13 @@
             </ul>
           </div>
           <div class="card-action">
-            <a class="green-text text-darken-3" href="reserver-<?php echo $jeuDemande;?>">Réserver</a>
-            <?php if ($_SESSION['estAdmin']) echo "<a class=\"green-text text-darken-3\" href=\"editJeu-{$jeuDemande}\">Modifier</a>";?>
+            <?php if (!$estAdmin) { ?>
+              <a class="green-text text-darken-3" href="reserver-<?php echo $ext["id"];?>">Réserver</a>
+            <?php } ?>
+            <?php if ($estAdmin) { ?>
+              <a class="green-text text-darken-3" href="editJeu-<?php echo $ext["id"]; ?>">Modifier la fiche</a>
+              <a class="green-text text-darken-3" href="supprJeu-<?php echo $ext["id"]; ?>">Supprimer l'extension</a>
+            <?php } ?>
           </div>
         </div>
       </div>
@@ -83,7 +90,6 @@
         <div class="card amber lighten-2 hoverable">
           <div class="card-content">
             <span class="card-title">À propos</span>
-            <p><?php echo "<b>Genre :</b> ".$ext["cat"]; ?></p>
             <p><?php echo $ext["description"]; ?></p>
           </div>
         </div>

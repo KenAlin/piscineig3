@@ -18,6 +18,7 @@
     "gestionPrets",
     "admin",
     "creerMembre",
+    "supprMembre",
     "creerJeu",
     "supprJeu",
     "editJeu"

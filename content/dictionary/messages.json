@@ -77,6 +77,40 @@
   ],
 
 
+  "formCreerUserOK":[
+    "Le membre a bien été ajouté !",
+    "positif"
+  ],
+  "formCreerUserPseudoDejaPris":[
+    "Le pseudo saisi est déjà utilisé par un membre. Veuillez en saisir un autre.",
+    "alerte"
+  ],
+
+
+  "supprUserOK":[
+    "Le membre a bien été supprimé !",
+    "positif"
+  ],
+  "supprUserPasDeParam":[
+    "Le membre demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
+    "alerte"
+  ],
+  "supprUserParamInvalide":[
+    "Le membre demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
+    "alerte"
+  ],
+  "supprUserSecuriteInvalide":[
+    "Erreur ! Vous avez mal orthographié le pseudo du membre à supprimer, ou vous essayez de supprimer un compte administrateur.",
+    "alerte"
+  ],
+  "supprUserEncorePrets":[
+    "Reste prêts",
+    "avertissement"
+  ],
+  "supprUserEncoreReservations":[
+    "Reste réservations",
+    "avertissement"
+  ],
 
 
   "codeMessage":[

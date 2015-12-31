@@ -20,7 +20,7 @@
           <span class="card-title">Supprimer une fiche de jeu</span>
           <div class="input-field">
             <input id="formNom" type="text" name="nom">
-            <label for="formformNomPseudo">Nom du jeu</label>
+            <label for="formNom">Nom du jeu</label>
           </div>
         </div>
         <div class="card-action">

@@ -2,11 +2,11 @@
   <div class="col s12 m12 l7">
     <div class="card grey">
       <div class="card-content">
-        <span class="card-title">Informations membre : <?php echo $profil["nom"]; ?></span>
+        <span class="card-title">Informations membre : <?php echo $profil["pseudo"]; ?></span>
         <p><i>Ces informations sont celles renseignées dans notre base de données. Pour tout changement, nous vous invitons à contacter un responsable de la ludothèque.</i></p>
         <ul>
           <?php if($profil["estAdmin"]) echo "<li class=\"red-text text-darken-2\"><b>Compte administrateur !</b></li>"; ?>
-          <li><b>Identifiant :</b> <?php echo $profil["id"]; ?></li>
+          <li><b>Numéro de compte :</b> <?php echo $profil["id"]; ?></li>
           <li><b>Nom :</b> <?php echo $profil["nom"]; ?></li>
           <li><b>Prénom :</b> <?php echo $profil["prenom"]; ?></li>
           <li><b>Mail de contact :</b> <?php echo $profil["mail"]; ?></li>
