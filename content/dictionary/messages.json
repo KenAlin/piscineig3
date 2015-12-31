@@ -1,10 +1,6 @@
 {
-  "formLoginMauvaisMdp":[
-    "Le mot de passe saisi est invalide. Veuillez réessayer, ou contacter un responsable de la ludothèque pour réinitialiser votre mot de passe.",
-    "alerte"
-  ],
-  "formLoginUtilisateurIntrouvable":[
-    "Le nom d'utilisateur saisi est introuvable. Contactez un responsable de la ludothèque si vous avez oublié votre pseudonyme.",
+  "pasDeParametre":[
+    "Cette page demande un paramètre valide. Une utilisation normale ne devrait pas déclencher l'affichage de ce message. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
     "alerte"
   ],
   "formIncomplet":[
@@ -15,18 +11,30 @@
     "Vous n'avez pas l'autorisation d'accéder à cette page. Veuillez vous connecter avec un compte autorisé.",
     "alerte"
   ],
+
+
+  "formLoginMauvaisMdp":[
+    "Le mot de passe saisi est invalide. Veuillez réessayer, ou contacter un responsable de la ludothèque pour réinitialiser votre mot de passe.",
+    "alerte"
+  ],
+  "formLoginUtilisateurIntrouvable":[
+    "Le nom d'utilisateur saisi est introuvable. Contactez un responsable de la ludothèque si vous avez oublié votre pseudonyme.",
+    "alerte"
+  ],
+
+
   "jeuInvalide":[
     "Vous essayez d'accéder à une page concernant un jeu qui n'existe pas. Paradoxal, n'est-ce pas ?",
     "alerte"
   ],
-  "pasDeParametre":[
-    "Cette page demande un paramètre. Une utilisation normale ne devrait pas déclencher l'affichage de ce message. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
-    "alerte"
-  ],
+
+
   "profilInvalide":[
     "Le profil demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
     "alerte"
   ],
+
+
   "formCreerJeuNomDejaPris":[
     "Un jeu porte déjà le nom du jeu que vous essayez d'ajouter. Vous ne pouvez pas rajouter de doublons : êtes-vous sûr de vous ?",
     "alerte"
@@ -35,6 +43,8 @@
     "Le jeu a bien été ajouté !",
     "positif"
   ],
+
+
   "supprJeuOK":[
     "Le jeu a bien été supprimé !",
     "positif"
@@ -51,8 +61,26 @@
     "Code de sécurité invalide ! Attention à bien orthographier le nom du jeu que vous souhaitez supprimer.",
     "alerte"
   ],
-  "codeQuatre":[
+  "supprJeuEncoreExemplaires":[
+    "Vous n'avez pas supprimé l'ensemble des exemplaires du jeu que vous souhaitez supprimer. Cliquez ICI pour vous rendre sur l'interface de suppression des exemplaires.",
+    "avertissement"
+  ],
+  "supprJeuEncoreExtensions":[
+    "Vous n'avez pas supprimé l'ensemble des extensions du jeu que vous souhaitez supprimer. Cliquez ICI pour vous rendre sur la fiche du jeu afin de trouver les extensions à supprimer.",
+    "avertissement"
+  ],
+
+
+  "formEditJeuOK":[
+    "Le jeu a bien été modifié !",
+    "positif"
+  ],
+
+
+
+
+  "codeMessage":[
     "message",
-    "alerte"
+    "alerte/avertissement/positif"
   ]
 }

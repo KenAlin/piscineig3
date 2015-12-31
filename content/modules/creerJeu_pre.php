@@ -2,6 +2,12 @@
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Créer une fiche d'un nouveau jeu";
 
+  // On va obtenir la liste des catégories
+  $sql = 'SELECT * FROM ludo_categorie;';
+  $requete = $bd->prepare($sql);
+  $requete->execute();
+  $listeCategories = $requete->fetchAll(PDO::FETCH_ASSOC);
+
   // Si il y a un paramètre : le nouveau jeu sera une extension, et ce paramètre est l'id du parent
   if ($getParamUn) {
     $parentNouvJeu = intval($getParamUn);

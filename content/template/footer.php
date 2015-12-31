@@ -36,6 +36,8 @@
 
     $('.button-collapse').sideNav();
 
+    $('select').material_select();
+
     $('.dropdown-button').dropdown({
         belowOrigin: true, // Displays dropdown below the button
       }

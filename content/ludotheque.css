@@ -61,6 +61,7 @@ form.loginForm {
 }
 .message_positif {
   background-color: rgb(0, 221, 52);
+  color: white;
 }
 .autocomplete {
   z-index: 5;

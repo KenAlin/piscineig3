@@ -5,7 +5,7 @@
   if ($getParamUn) {
     $jeuDemande = intval($getParamUn);
 
-    // Obtention nombre total de jeux (pour la pagination)
+    // Obtention du jeu
     $sql = 'SELECT * FROM ludo_jeux WHERE id=:id;';
     $requete = $bd->prepare($sql);
     $requete->bindValue(':id', $jeuDemande, PDO::PARAM_INT);

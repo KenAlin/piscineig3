@@ -23,6 +23,14 @@
             <label for="formformNomPseudo">Nom du jeu</label>
           </div>
           <div class="input-field">
+            <select id="formCat" type="text" name="categorie">
+              <?php foreach ($listeCategories as $categorie) { ?>
+                <option value="<?php echo $categorie["id_cat"]; ?>" <?php if ($categorie["id_cat"] == 0) echo "selected"; ?>><?php echo $categorie["nom"]; ?></option>
+              <?php } ?>
+            </select>
+            <label for="formCat">Catégorie</label>
+          </div>
+          <div class="input-field">
             <input id="formAnnee" type="text" name="annee">
             <label for="formPsformAnneeeudo">Année</label>
           </div>
@@ -39,8 +47,8 @@
             <label for="formNbJ">Nombre de joueurs</label>
           </div>
           <div class="input-field">
-            <input id="formDesc" type="text" name="desc">
-            <label for="formDesc">Description (succinte)</label>
+            <textarea id="formDesc" class="materialize-textarea" name="desc"></textarea>
+            <label for="formDesc">Description</label>
           </div>
         </div>
         <div class="card-action">

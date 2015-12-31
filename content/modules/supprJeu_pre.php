@@ -29,11 +29,36 @@
         if ($postNom) {
           // Le formulaire ne semble pas incomplet
           if ($postNom === $nomJeu) {
-            $sql = 'DELETE FROM ludo_jeux WHERE id=:param;';
+            // On va vérifier que le jeu n'a plus d'extensions filles
+            $sql = 'SELECT * FROM ludo_jeux WHERE parent=:param;';
             $requete = $bd->prepare($sql);
             $requete->bindValue(':param', $idJeuSuppr, PDO::PARAM_INT);
             $requete->execute();
-            $codeMessage = "supprJeuOK";
+            $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+            if (count($result) == 0) {
+              // Le jeu n'a plus d'extension ! On va vérifier les exemplaires (il en faut 0 également)
+              $sql = 'SELECT * FROM ludo_exemplaires WHERE idJeu=:param;';
+              $requete = $bd->prepare($sql);
+              $requete->bindValue(':param', $idJeuSuppr, PDO::PARAM_INT);
+              $requete->execute();
+              $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+              if (count($result) == 0) {
+                // Le jeu n'a plus d'exexmplaires ! On peut supprimer !!
+                $sql = 'DELETE FROM ludo_jeux WHERE id=:param;';
+                $requete = $bd->prepare($sql);
+                $requete->bindValue(':param', $idJeuSuppr, PDO::PARAM_INT);
+                $requete->execute();
+                $codeMessage = "supprJeuOK";
+              }
+              else {
+                $codeMessage = "supprJeuEncoreExemplaires";
+              }
+            }
+            else {
+              $codeMessage = "supprJeuEncoreExtensions";
+            }
           }
           else {
             $codeMessage = "supprJeuSecuriteInvalide";

@@ -19,7 +19,8 @@
     "admin",
     "creerMembre",
     "creerJeu",
-    "supprJeu"
+    "supprJeu",
+    "editJeu"
   ],
   "nonAdmin":[
     "reserver"
