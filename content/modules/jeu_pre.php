@@ -29,6 +29,14 @@
         $aDesExtensions = false;
       }
 
+      // Et le nom de sa catégorie svp
+      $sql = 'SELECT nom FROM ludo_categorie WHERE id_cat=:cat;';
+      $requete = $bd->prepare($sql);
+      $requete->bindValue(':cat', $infosJeu["cat"], PDO::PARAM_INT);
+      $requete->execute();
+      $catJeu = $requete->fetchAll(PDO::FETCH_ASSOC);
+      $nomCatJeu = $catJeu[0]["nom"];
+
     }
     else {
       $infosJeu = null;

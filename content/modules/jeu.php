@@ -42,7 +42,7 @@
     <div class="card amber lighten-2 hoverable">
       <div class="card-content">
         <span class="card-title">À propos</span>
-        <p><?php echo "<b>Genre :</b> ".$infosJeu["cat"]; ?></p>
+        <p><?php echo "<b>Genre :</b> ".$nomCatJeu; ?></p>
         <p><?php echo $infosJeu["description"]; ?></p>
       </div>
     </div>
