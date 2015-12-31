@@ -21,7 +21,7 @@
     <a class="btn dropdown-button green lighten-1" href="#" data-activates="dropdownCat">Par catégorie <i class="mdi-navigation-arrow-drop-down right"></i></a>
   </div>
 
-  <div class="input-field col s12 m3 l3 valign-wrapper">
+  <div class="input-field col s12 m6 l6 valign-wrapper">
     <!-- AFFICHAGE BARRE RECHERCHE -->
     <form class="">
       <i class="material-icons prefix">search</i>
@@ -33,6 +33,12 @@
       <label for="recherche">Chercher un jeu</label>
     </form>
   </div>
+
+  <?php if ($estAdmin) { ?>
+    <div class="col s12 m3 l3 center">
+      <a class="btn blue waves-effect waves-light" href="creerJeu">Ajouter un jeu <i class="fa fa-plus-circle"></i></a>
+    </div>
+  <?php } ?>
 </div>
 
 

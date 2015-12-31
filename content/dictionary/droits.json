@@ -17,7 +17,9 @@
     "gestionJeux",
     "gestionPrets",
     "admin",
-    "creerMembre"
+    "creerMembre",
+    "creerJeu",
+    "supprJeu"
   ],
   "nonAdmin":[
     "reserver"

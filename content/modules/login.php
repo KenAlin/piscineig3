@@ -25,6 +25,12 @@
 </div>
 
 <div class="row">
+  <div class="col s12 center">
+    <img class="responsive-img" src="content/img/MapHomoLudens.png">
+  </div>
+</div>
+
+<div class="row">
   <div class="col s12">
     <div class="row center">
       <h5 class="header col s12 light">Saisissez vos identifiants de membre pour vous connecter et accéder aux service de la ludothèque.</h5>

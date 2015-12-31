@@ -11,7 +11,7 @@
   $limite = 33;
 
   // Obtention nombre total de jeux (pour la pagination)
-  $sql = 'SELECT count(*) FROM ludo_jeux;';
+  $sql = 'SELECT count(*) FROM ludo_jeux WHERE parent IS NULL;';
   $requete = $bd->prepare($sql);
   $requete->execute(array(':id' => 0));
   $compteJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
@@ -27,7 +27,7 @@
   $offsetJeux = ($pageDemande - 1)*33+1;
 
   // Obtention de la liste de jeux (limite les jeux par page)
-  $sql = 'SELECT * FROM ludo_jeux WHERE id >= :id LIMIT :lim ;';
+  $sql = 'SELECT * FROM ludo_jeux WHERE id >= :id AND parent IS NULL ORDER BY nom LIMIT :lim;';
   $requete = $bd->prepare($sql);
   $requete->bindValue(':lim', (int) $limite, PDO::PARAM_INT);
   $requete->bindValue(':id', $offsetJeux, PDO::PARAM_INT);

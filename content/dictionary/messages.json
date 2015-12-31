@@ -27,6 +27,30 @@
     "Le profil demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
     "alerte"
   ],
+  "formCreerJeuNomDejaPris":[
+    "Un jeu porte déjà le nom du jeu que vous essayez d'ajouter. Vous ne pouvez pas rajouter de doublons : êtes-vous sûr de vous ?",
+    "alerte"
+  ],
+  "formCreerJeuOK":[
+    "Le jeu a bien été ajouté !",
+    "positif"
+  ],
+  "supprJeuOK":[
+    "Le jeu a bien été supprimé !",
+    "positif"
+  ],
+  "supprJeuPasDeParam":[
+    "Le jeu demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
+    "alerte"
+  ],
+  "supprJeuParamInvalide":[
+    "Le jeu demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
+    "alerte"
+  ],
+  "supprJeuSecuriteInvalide":[
+    "Code de sécurité invalide ! Attention à bien orthographier le nom du jeu que vous souhaitez supprimer.",
+    "alerte"
+  ],
   "codeQuatre":[
     "message",
     "alerte"
