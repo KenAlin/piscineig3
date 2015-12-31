@@ -27,8 +27,6 @@
     "Vous essayez d'accéder à une page concernant un jeu qui n'existe pas. Paradoxal, n'est-ce pas ?",
     "alerte"
   ],
-
-
   "profilInvalide":[
     "Le profil demandé n'existe pas. Si vous pensez que c'est une erreur, veuillez contacter un responsable de la ludothèque.",
     "alerte"
@@ -110,6 +108,12 @@
   "supprUserEncoreReservations":[
     "Reste réservations",
     "avertissement"
+  ],
+
+
+  "formEditUserOK":[
+    "Le membre a bien été modifié !",
+    "positif"
   ],
 
 

@@ -13,15 +13,11 @@
   ],
   "admin":[
     "gestionReservations",
-    "gestionMembres",
-    "gestionJeux",
     "gestionPrets",
-    "admin",
-    "creerMembre",
-    "supprMembre",
-    "creerJeu",
-    "supprJeu",
-    "editJeu"
+    "gestionMembres", "creerMembre", "supprMembre", "resetMotDePasse", "editProfil",
+    "gestionJeux", "creerJeu", "supprJeu", "editJeu",
+    "gestionExemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",
+    "admin"
   ],
   "nonAdmin":[
     "reserver"

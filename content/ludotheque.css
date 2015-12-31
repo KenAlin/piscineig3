@@ -20,7 +20,9 @@ nav {
 
 section {
   padding: 0 55px;
-
+}
+.input-field {
+  min-height: 35px;
 }
 
 form.loginForm {

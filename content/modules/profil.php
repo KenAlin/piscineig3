@@ -26,6 +26,11 @@
         <span class="card-title">Réservation en cours</span>
         <p>Liste des réservations en cours ici.</p>
       </div>
+      <div class="card-action">
+        <?php if ($estAdmin) { ?>
+          <a class="green-text text-darken-3" href="editProfil-<?php echo $profil["id"]; ?>">Modifier le profil</a>
+        <?php } ?>
+      </div>
     </div>
   </div>
 </div>
