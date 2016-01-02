@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<?php if (count($listeExemplaires) < 1) { ?>
+<?php if (!$listeExemplaires) { ?>
   <div class="row">
     <div class="col s12 m3 center">&nbsp;</div>
     <div class="col s12 m6">

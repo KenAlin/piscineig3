@@ -40,6 +40,7 @@
     $renvoiMessage = gestionMessage($codeMessage);
     $messageUtilisateur = $renvoiMessage[0];
     $messageImportance = $renvoiMessage[1];
+
   }
   else {
     $messageUtilisateur = false;

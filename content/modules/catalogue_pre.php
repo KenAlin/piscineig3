@@ -1,12 +1,10 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Catalogue des jeux";
+  include_once("content/fonctions/jeux.php");
 
   // On va obtenir la liste des catégories
-  $sql = 'SELECT * FROM ludo_categorie;';
-  $requete = $bd->prepare($sql);
-  $requete->execute();
-  $listeCategories = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $listeCategories = listeCategories();
 
   if ($getParamUn) {
     $catDemandee = intval($getParamUn);
@@ -24,21 +22,7 @@
   $limite = 33;
 
   // Obtention nombre total de jeux (pour la pagination)
-  if ($catDemandee != 0) {
-    $sql = 'SELECT count(*) FROM ludo_jeux WHERE cat=:cat AND parent IS NULL;';
-    $requete = $bd->prepare($sql);
-    $requete->execute(array(':cat' => $catDemandee));
-    $compteJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
-    $compteJeux = $compteJeux[0]["count(*)"];
-  }
-  else {
-    $sql = 'SELECT count(*) FROM ludo_jeux WHERE parent IS NULL;';
-    $requete = $bd->prepare($sql);
-    $requete->execute();
-    $compteJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
-    $compteJeux = $compteJeux[0]["count(*)"];
-  }
-
+  $compteJeux = nbJeuxHorsExt($catDemandee);
 
   $nbPagesCatalogue = intval($compteJeux / $limite)+1;
 

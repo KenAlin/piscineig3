@@ -1,6 +1,7 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Ajouter un membre";
+  include_once("content/fonctions/membres.php");
 
   if ($actionPost == "create") {
     // On arrive depuis le formulaire : on va sécuriser quelques données ...
@@ -9,13 +10,7 @@
     } else { $postPseudo = false; }
 
     if ($postPseudo) {
-      // Le formulaire ne semble pas incomplet : on va chercher en BD les infos sur un éventuel jeu qui porterait déjà ce nom
-      $sql = 'SELECT * FROM ludo_utilisateurs WHERE pseudo = :pseudo;';
-      $requete = $bd->prepare($sql);
-      $requete->execute(array(':pseudo' => $postPseudo));
-      $resultsql = $requete->fetchAll(PDO::FETCH_ASSOC);
-
-      if (count($resultsql) == 0) {
+      if (!infosMembreDepuisPseudo($postPseudo)) {
         // Ok, pas de membre qui porte ce pseudo ! On va l'ajouter, ok ?
         $sql = 'INSERT INTO  ludo_utilisateurs (pseudo, password, estAdmin, membre_depuis)  VALUES (:pseudo, :passwrd, :admin, :maintenant);';
         $requete = $bd->prepare($sql);

@@ -1,15 +1,13 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Modifier la fiche d'un jeu";
+  include_once("content/fonctions/jeux.php");
 
   if ($getParamUn) {
     $jeuDemande = intval($getParamUn);
 
     // On va obtenir la liste des catégories
-    $sql = 'SELECT * FROM ludo_categorie;';
-    $requete = $bd->prepare($sql);
-    $requete->execute();
-    $listeCategories = $requete->fetchAll(PDO::FETCH_ASSOC);
+    $listeCategories = listeCategories();
 
     // Traitement si on a modifié la fiche
     if ($actionPost == "edit") {
@@ -48,20 +46,12 @@
     // Fin de traitement de la fiche
 
     // Obtention du jeu
-    $sql = 'SELECT * FROM ludo_jeux WHERE id=:id;';
-    $requete = $bd->prepare($sql);
-    $requete->bindValue(':id', $jeuDemande, PDO::PARAM_INT);
-    $requete->execute();
-    $infosJeu = $requete->fetchAll(PDO::FETCH_ASSOC);
+    $infosJeu = infosJeuDepuisId($jeuDemande);
 
-    if (isset($infosJeu[0])) {
-      $infosJeu = $infosJeu[0];
-    }
-    else {
+    if (!$infosJeu) {
       $infosJeu = null;
       $codeMessage = "jeuInvalide";
     }
-
   }
   else {
     $jeuDemande = null;

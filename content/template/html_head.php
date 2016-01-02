@@ -3,7 +3,7 @@
 
 <!--Import Icon Fonts-->
 <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!--Import materialize.css-->
 <link type="text/css" rel="stylesheet" href="content/framework/css/materialize.min.css"  media="screen,projection"/>

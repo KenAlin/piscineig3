@@ -14,9 +14,9 @@
   <div class="col s12 m3 l3 center">
     <!-- AFFICHAGE BOUTON CATEGORIES -->
     <ul id="dropdownCat" class="dropdown-content">
-      <?php foreach ($listeCategories as $categorie) { if ($categorie["id_cat"] == 0) { $categorie["nom"] = "Toutes"; } ?>
+      <?php foreach ($listeCategories as $categorie) { if ($categorie["id_cat"] == 0) { $categorie["nom"] = "Toutes"; } if (nbJeuxHorsExt($categorie["id_cat"]) > 0) { ?>
         <li><a href="catalogue-<?php echo $categorie["id_cat"]; ?>"><?php echo $categorie["nom"]; ?></a></li>
-      <?php } ?>
+      <?php } } ?>
     </ul>
     <a class="btn dropdown-button green lighten-1" href="#" data-activates="dropdownCat">Catégorie <i class="mdi-navigation-arrow-drop-down right"></i></a>
   </div>

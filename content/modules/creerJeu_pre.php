@@ -1,12 +1,10 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Créer une fiche d'un nouveau jeu";
+  include_once("content/fonctions/jeux.php");
 
   // On va obtenir la liste des catégories
-  $sql = 'SELECT * FROM ludo_categorie;';
-  $requete = $bd->prepare($sql);
-  $requete->execute();
-  $listeCategories = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $listeCategories = listeCategories();
 
   // Si il y a un paramètre : le nouveau jeu sera une extension, et ce paramètre est l'id du parent
   if ($getParamUn) {
@@ -18,14 +16,10 @@
 
   if ($parentNouvJeu) {
     // On a obtenu le jeu parent ! Maintenant, on voudrait bien son nom (pour être sûr) ...
-    $sql = 'SELECT nom FROM ludo_jeux WHERE id=:param;';
-    $requete = $bd->prepare($sql);
-    $requete->bindValue(':param', $parentNouvJeu, PDO::PARAM_INT);
-    $requete->execute();
-    $nomParent = $requete->fetchAll(PDO::FETCH_ASSOC);
+    $infosJeu = infosJeuDepuisId($parentNouvJeu);
 
-    if (isset($nomParent[0])) {
-      $nomParent = $nomParent[0]["nom"];
+    if ($infosJeu) {
+      $nomParent = $infosJeu["nom"];
     }
     else {
       $nomParent = false;
@@ -56,12 +50,9 @@
 
     if ($postNom) {
       // Le formulaire ne semble pas incomplet : on va chercher en BD les infos sur un éventuel jeu qui porterait déjà ce nom
-      $sql = 'SELECT * FROM ludo_jeux WHERE nom = :nom;';
-      $requete = $bd->prepare($sql);
-      $requete->execute(array(':nom' => $postNom));
-      $infosJeu = $requete->fetchAll(PDO::FETCH_ASSOC);
+      $infosJeu = infosJeuDepuisNom($postNom);
 
-      if (count($infosJeu) == 0) {
+      if (!$infosJeu) {
         // Ok, pas de jeu qui porte ce nom en BD !
         // On va l'ajouter, ok ?
         $sql = 'INSERT INTO  ludo_jeux (id ,nom ,description ,cat ,année ,éditeur ,age ,nb_joueurs,parent)  VALUES (NULL ,  :nom,  :descr,  :cat,  :annee,  :editeur,  :age,  :nbj,  :parent);';

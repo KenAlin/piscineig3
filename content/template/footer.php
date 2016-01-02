@@ -115,6 +115,11 @@
       });
     <?php } ?>
 
+    <?php if ( in_array($getModule, array("nouveauPret", "nouvelleReservation")) ) { ?>
+      /* COPYRIGHT Baptiste Donaux - https://autocomplete-js.com */
+      AutoComplete();
+    <?php } ?>
+
 
   }); // end of document ready
 })(jQuery); // end of jQuery name space

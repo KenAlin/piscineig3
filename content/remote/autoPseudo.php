@@ -14,24 +14,19 @@
   // Gstion des use cases
   include_once('../fonctions/gestionUCsansDroits.php');
 
-  if ($getModule) {
-    // Obtention nombre total de jeux (pour la pagination)
-    $sql = 'SELECT * FROM ludo_jeux WHERE nom LIKE :nom LIMIT 10;';
+  if ($getModule && $estAdmin) {
+    // Obtention membres
+    $sql = 'SELECT * FROM ludo_utilisateurs WHERE pseudo LIKE :pseudo LIMIT 10;';
     $requete = $bd->prepare($sql);
-    $requete->bindValue(':nom', "%{$getModule}%", PDO::PARAM_INT);
+    $requete->bindValue(':pseudo', "%{$getModule}%", PDO::PARAM_INT);
     $requete->execute();
-    $listeJeux = $requete->fetchAll(PDO::FETCH_ASSOC);
+    $listeUsers = $requete->fetchAll(PDO::FETCH_ASSOC);
 
-    if (isset($listeJeux[0])) {
+    if (isset($listeUsers[0])) {
       $renvoi = array();
-      foreach ($listeJeux as $jeu) {
-        if ($jeu["parent"]) {
-          $link = "jeu-{$jeu["parent"]}-{$jeu["id"]}";
-        }
-        else {
-          $link = "jeu-{$jeu["id"]}";
-        }
-        $renvoi[$link] = $jeu["nom"];
+      foreach ($listeUsers as $user) {
+        $link = $user["pseudo"];
+        $renvoi[$link] = $user["pseudo"];
       }
       echo jsonEncode($renvoi);
     }

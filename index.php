@@ -14,7 +14,9 @@
   <body>
     <?php include('content/template/header.php'); ?>
     <section>
-      <?php if ($messageUtilisateur) { echo "<div class=\"messageUtilisateur message_{$messageImportance}\">$messageUtilisateur</div>"; }
+      <?php if ($messageUtilisateur) {
+        echo "<div class=\"messageUtilisateur message_{$messageImportance}\">$messageUtilisateur</div>";
+      }
       include($cheminModuleVue); ?>
     </section>
     <?php include('content/template/footer.php'); ?>

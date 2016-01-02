@@ -1,6 +1,7 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Ajout d'un exemplaire";
+  include_once("content/fonctions/jeux.php");
 
   // Il faut un paramètre : l'id du jeu auquel on va rajouter un exemplaire
   if ($getParamUn) {

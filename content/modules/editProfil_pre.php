@@ -1,6 +1,7 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Modifier le profil d'un membre";
+  include_once("content/fonctions/membres.php");
 
   if ($getParamUn) {
     $profilDemande = intval($getParamUn);
@@ -49,6 +50,7 @@
         else if ($postAdh == 1) $nbJoursAdh = 7;
 
         $finAbo = time() + 60*60*24*$nbJoursAdh;
+        if ($postAdh != 5) $finAbo = strtotime("tomorrow", $finAbo) - 1; // Obtient 23:59:59 du dernier jour d'adhésion
         $sql = 'UPDATE ludo_utilisateurs SET fin_abo=:fin WHERE id=:iduser;';
         $requete = $bd->prepare($sql);
         $requete->bindValue(':fin', $finAbo, PDO::PARAM_INT);
@@ -61,17 +63,10 @@
     }
     // Fin de traitement de la fiche
 
-    // Obtention du jeu
-    $sql = 'SELECT * FROM ludo_utilisateurs WHERE id=:id;';
-    $requete = $bd->prepare($sql);
-    $requete->bindValue(':id', $profilDemande, PDO::PARAM_INT);
-    $requete->execute();
-    $infosUser = $requete->fetchAll(PDO::FETCH_ASSOC);
+    // Obtention du membre
+    $infosUser = infosMembreDepuisId($profilDemande);
 
-    if (isset($infosUser[0])) {
-      $infosUser = $infosUser[0];
-    }
-    else {
+    if (!$infosUser) {
       $infosUser = null;
       $codeMessage = "profilInvalide";
     }

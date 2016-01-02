@@ -12,7 +12,7 @@ function gestionMessage($codeMessage) {
     $return[1] = $listeMessages[$codeMessage][1];
   }
   else {
-    $return = array(false, false);
+    $return = array($codeMessage, "avertissement");
   }
   return $return;
 }

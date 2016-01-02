@@ -70,12 +70,12 @@
     "alerte"
   ],
   "supprJeuEncoreExemplaires":[
-    "Vous n'avez pas supprimé l'ensemble des exemplaires du jeu que vous souhaitez supprimer. Cliquez ICI pour vous rendre sur l'interface de suppression des exemplaires.",
-    "avertissement"
+    "Vous n'avez pas supprimé l'ensemble des exemplaires du jeu que vous souhaitez supprimer.",
+    "alerte"
   ],
   "supprJeuEncoreExtensions":[
-    "Vous n'avez pas supprimé l'ensemble des extensions du jeu que vous souhaitez supprimer. Cliquez ICI pour vous rendre sur la fiche du jeu afin de trouver les extensions à supprimer.",
-    "avertissement"
+    "Vous n'avez pas supprimé l'ensemble des extensions du jeu que vous souhaitez supprimer.",
+    "alerte"
   ],
 
 
@@ -112,12 +112,12 @@
     "alerte"
   ],
   "supprUserEncorePrets":[
-    "Reste prêts",
-    "avertissement"
+    "Cet utilisateur a encore des prêts en cours : vous ne pouvez pas le supprimer !",
+    "alerte"
   ],
   "supprUserEncoreReservations":[
-    "Reste réservations",
-    "avertissement"
+    "Cet utilisateur a encore des réservations en cours : vous ne pouvez pas le supprimer !",
+    "alerte"
   ],
 
 
@@ -127,8 +127,21 @@
   ],
 
 
-  "codeMessage":[
+  "pretCBinexistant":[
+    "Le code-barre saisi ne correspond à aucun jeu enregistré.",
+    "alerte"
+  ],
+  "pretCBdejaEnPret":[
+    "Attention : cet exemplaire est considéré comme déjà emprunté ! Il est vivement recommandé de d'abord enregistrer le retour de cet exemplaire : <a href=\"retour\">cliquez ICI</a>.",
+    "avertissement"
+  ],
+
+
+
+
+
+  "debug":[
     "message",
-    "alerte/avertissement/positif"
+    "positif"
   ]
 }

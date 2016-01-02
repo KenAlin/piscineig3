@@ -1,5 +1,6 @@
 <?php
   include_once('../../../settings.php');
+  session_start();
 
   // IMPORT DES FONCTIONS DE TRAITEMENT
   include_once('../fonctions/traitement.php');
@@ -13,7 +14,7 @@
   // Gstion des use cases
   include_once('../fonctions/gestionUCsansDroits.php');
 
-  if ($getModule) {
+  if ($getModule && $estAdmin) {
     // Obtention membres
     $sql = 'SELECT * FROM ludo_utilisateurs WHERE pseudo LIKE :pseudo LIMIT 10;';
     $requete = $bd->prepare($sql);

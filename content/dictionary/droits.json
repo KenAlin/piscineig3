@@ -13,7 +13,7 @@
   ],
   "admin":[
     "gestionReservations",
-    "gestionPrets",
+    "gestionPrets", "nouveauPret",
     "gestionMembres", "creerMembre", "supprMembre", "resetMotDePasse", "editProfil",
     "gestionJeux", "creerJeu", "supprJeu", "editJeu",
     "exemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",

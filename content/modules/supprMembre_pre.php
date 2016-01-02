@@ -1,6 +1,7 @@
 <?php
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Supprimer un membre";
+  include_once("content/fonctions/membres.php");
 
   // Le paramètre est l'id du membre à supprimer
   if ($getParamUn) {
