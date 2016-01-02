@@ -2,11 +2,12 @@
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Nouveau prêt";
   include_once("content/fonctions/membres.php");
+  include_once("content/fonctions/jeux.php");
 
   // CONTEXTE :
   //    0 : Simple formulaire de saisie de code barre ("init")
-  //    1 : Saisie du pseudo de l'emprunteur
-  //    2 : Saisie de la date de retour prévue
+  //    1 : Saisie du pseudo de l'emprunteur et de la date de retour prévue
+  //    2 : Confirmation finale
   $contexte = 0;
 
   // Initialisations diverses
@@ -14,27 +15,53 @@
   $infosEx = null;
   $dejaEnPret = false;
   $infosUser = null;
+  $postDuree = false;
 
-  if ($actionPost == "shop") {
+  if ($actionPost == "confirm") {
+    // On arrive du formulaire de confirmation, en toute fin
+    if (isset($_POST["code_barre"])) {
+      $postCB = trim(htmlentities($_POST["code_barre"]));
+    } else { $postCB = false; }
+    if (isset($_POST["emprunteur"])) {
+      $postEmprunteur = trim(htmlentities($_POST["emprunteur"]));
+    } else { $postEmprunteur = false; }
+    if (isset($_POST["duree"])) {
+      $postDuree = intval($_POST["duree"]);
+    } else { $postDuree = false; }
+
+    if ($postCB && $postEmprunteur && $postDuree) {
+      // Calcul de la date de fin de prêt
+      $finPret = time() + 60*60*24*$postDuree;
+      $finPret = strtotime("tomorrow", $finPret) - 1; // Obtient 23:59:59 du dernier jour du prêt
+
+      // On veut l'id d'exemplaire désigné par le CB
+      $exemplaire = infosExemplaireDepuisCodeBarres($postCB);
+
+      // On enregistre le prêt !
+      $sql = 'INSERT INTO  ludo_emprunts (dateDebut, dateFin, dateRetour, pseudo, idExemplaire)  VALUES (:debut, :fin, NULL, :pseudo, :exemplaire);';
+      $requete = $bd->prepare($sql);
+      $requete->execute(array(':debut' => time(), ':fin' => $finPret, ':pseudo' => $postEmprunteur, ':exemplaire' => $exemplaire["idEx"]));
+      $codeMessage = "formPretOK";
+    }
+  }
+
+
+  else if ($actionPost == "shop") {
     // Vérifier que le CB est valide
     if (isset($_POST["code_barre"])) {
       $postCB = trim(htmlentities($_POST["code_barre"]));
     } else { $postCB = false; }
 
     if ($postCB) {
-      $sql = 'SELECT * FROM ludo_exemplaires WHERE code_barre=:cb;';
-      $requete = $bd->prepare($sql);
-      $requete->bindValue(':cb', $postCB, PDO::PARAM_INT);
-      $requete->execute();
-      $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+      $infosEx = infosExemplaireDepuisCodeBarres($postCB);
 
-      if (isset($result[0])) {
-        $infosEx = $result[0];
+      if ($infosEx) {
         $contexte = 1;
 
+        // Cherche si l'exemplaire est déjà emprunté (normalement non)
         $sql = 'SELECT * FROM ludo_emprunts WHERE idExemplaire=:idex AND dateRetour IS NULL;';
         $requete = $bd->prepare($sql);
-        $requete->bindValue(':idex', $postCB, PDO::PARAM_INT);
+        $requete->bindValue(':idex', $infosEx["idEx"], PDO::PARAM_INT);
         $requete->execute();
         $result = $requete->fetchAll(PDO::FETCH_ASSOC);
 
@@ -45,12 +72,7 @@
         }
 
         // On cherche les infos du jeu
-        $sql = 'SELECT * FROM ludo_jeux WHERE id=:id;';
-        $requete = $bd->prepare($sql);
-        $requete->bindValue(':id', $infosEx["idJeu"], PDO::PARAM_INT);
-        $requete->execute();
-        $result = $requete->fetchAll(PDO::FETCH_ASSOC);
-        $infosJeu = $result[0];
+        $infosJeu = infosJeuDepuisId($infosEx["idJeu"]);
       }
       else {
         // Erreur : CB inexistant
@@ -71,6 +93,9 @@
     if (isset($_POST["forcePret"])) {
       $postForcePret = intval($_POST["forcePret"]);
     } else { $postForcePret = false; }
+    if (isset($_POST["duree"])) {
+      $postDuree = intval($_POST["duree"]);
+    } else { $postDuree = false; }
 
     if ($postPseudo) {
       // On cherche les infos du membre
@@ -81,27 +106,16 @@
         //    soit estAdmin
         //    soit adhésion encore valable && (soit pretsEnCours < pretsMax / soit tentative d'emprunt d'une extension d'un   jeu déjà en cours d'emprunt)
         //    soit forçage
-        if ($infosUser["estAdmin"] || $postForcePret) {
+
+        $empruntPossible = empruntPossible($infosUser, $infosJeu, $postForcePret);
+        if ($empruntPossible === true) {
           $contexte = 2;
+          if ($postDuree > $settings["nbJoursMaxPrets"]) $postDuree = $settings["nbJoursMaxPrets"];
         }
         else {
-          // Les ennuis commencent ! On vérifie les deux conditions :
-          //    l'adhésion est encore valable
-          //    pretsEnCours < pretsMax OU tentative d'emprunt d'une extension d'un jeu déjà en cours d'emprunt
-          if ($infosUser["fin_abo"] > time()) {
-            if (nbPretsEnCoursMembre($postPseudo) < $settings["maxPretsPersonne"]) {
-              // Fine ! C'est OK !
-              $contexte = 2;
-            }
-            else {
-
-            }
-
-          }
-          else {
-            // Erreur ! L'adhésion n'est plus valable :(
-            $codeMessage = "pretCBfinAbo";
-          }
+          if ($empruntPossible == "ADHESION_TERMINEE") $codeMessage = "pretAboFini";
+          else if ($empruntPossible == "NB_PRETS_MAX_ATTEINT") $codeMessage = "pretNbPretsMaxAtteint";
+          else $codeMessage = "erreurInconnue";
         }
 
       }

@@ -103,6 +103,21 @@ function exemplairesDunJeu($id) {
   else return false;
 }
 
+function infosExemplaireDepuisCodeBarres($cb) {
+  // Renvoie la liste de TOUTES les infos d'un exemplaire d'un jeu depuis son code-barre sous forme d'array ... renvoie false si exemplaire non trouvé
+  $sql = 'SELECT * FROM ludo_exemplaires WHERE code_barre=:cb;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':cb', $cb, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  if (isset($result[0])) {
+    $result = $result[0];
+    return $result;
+  }
+  else return false;
+}
+
 
 
 

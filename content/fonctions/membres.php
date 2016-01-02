@@ -55,6 +55,61 @@ function infosTousMembres() {
   return $result;
 }
 
+function empruntPossible($infosUser, $infosJeu, $forcage) {
+  // Renvoie true si l'emprunt est possible, un code d'erreur sinon ...
+
+  if ($infosUser["estAdmin"] || $forcage) {
+    return true;
+  }
+  else {
+    // Les ennuis commencent ! On vérifie les deux conditions :
+    //    l'adhésion est encore valable
+    //    pretsEnCours < pretsMax OU tentative d'emprunt d'une extension d'un jeu déjà en cours d'emprunt
+    if ($infosUser["fin_abo"] > time()) {
+      $pretsEnCoursMembre = pretsEnCoursMembre($infosUser["pseudo"]);
+      $nbPrets = count($pretsEnCoursMembre);
+
+      if (count($pretsEnCoursMembre) < $GLOBALS['settings']["maxPretsPersonne"]) {
+        // Fine ! C'est OK !
+        return true;
+      }
+      else {
+        if (isset($infosJeu["parent"])) {
+          // On veut emprunter une extension : on vérifie avec les compteurs ...
+
+          $tentativeEmpruntExtJeuDejaEmpruntee = false;
+          $i = 0;
+
+          while ($i <= $nbPrets || !$tentativeEmpruntExtJeuDejaEmpruntee) {
+            if ($pretsEnCoursMembre["idJeu"] == $infosJeu["parent"]) { $tentativeEmpruntExtJeuDejaEmpruntee = true; }
+            else { $i++; }
+          }
+
+          if ($i <= $nbPrets) {
+            // Peut emprunter !!
+            return true;
+          }
+          else {
+            // Non -> peut pas emprunter !
+            return "NB_PRETS_MAX_ATTEINT";
+          }
+
+        }
+        else {
+          // Erreur ! Trop de prêts en cours ...
+          return "NB_PRETS_MAX_ATTEINT";
+        }
+
+      }
+
+    }
+    else {
+      // Erreur ! L'adhésion n'est plus valable :(
+      return "ADHESION_TERMINEE";
+    }
+  }
+
+}
 
 
 ?>

@@ -132,7 +132,7 @@
     "alerte"
   ],
   "pretCBdejaEnPret":[
-    "Attention : cet exemplaire est considéré comme déjà emprunté ! Il est vivement recommandé de d'abord enregistrer le retour de cet exemplaire : <a href=\"retour\">cliquez ICI</a>.",
+    "Attention : cet exemplaire est considéré comme déjà emprunté. Il est vivement recommandé de d'abord enregistrer le retour de cet exemplaire : <a href=\"retour\">cliquez ICI</a> !",
     "avertissement"
   ],
 
