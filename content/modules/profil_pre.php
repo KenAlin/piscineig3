@@ -11,7 +11,7 @@
   }
 
   // Obtention des infos du membre
-  $profil = infosMembreDepuisId($idMembre);
+  $profil = infosMembreDepuisId($profilDemande);
 
   if (!$profil) {
     $profil = null;

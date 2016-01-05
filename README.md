@@ -20,7 +20,7 @@ Bienvenue, les nageurs ! Pour contribuer, je vous invite à suivre ces étapes :
 
 Conseil : utilisez l'éditeur [Atom](https://atom.io/) pour coder.
 
-## TODO
+## TODO 
 ### Essentiel
 - Fonction de gestion des prêts (à détailler)
   - Prémices du formulaire d'enregistrement (manque seulement la durée à paramétrer !!)

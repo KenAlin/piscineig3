@@ -43,11 +43,10 @@
       } else { $postAdh = 0; }
 
       if ($postAdh > 0) {
-        if ($postAdh == 5) $nbJoursAdh = 0; // On demande la suppression immédiate de son adhésion
-        else if ($postAdh == 4) $nbJoursAdh = 365;
-        else if ($postAdh == 3) $nbJoursAdh = 91;
-        else if ($postAdh == 2) $nbJoursAdh = 31;
-        else if ($postAdh == 1) $nbJoursAdh = 7;
+        if ($postAdh == 6) $nbJoursAdh = 0; // On demande la suppression immédiate de son adhésion
+        else if ($postAdh == 3) $nbJoursAdh = 365+365-date("z"); // Fin en fin d'année civile suivante (N+1)
+        else if ($postAdh == 2) $nbJoursAdh = 365-date("z"); // Fin en fin d'année civile (N)
+        else if ($postAdh == 1) $nbJoursAdh = 365; // Fin dans 365j
 
         $finAbo = time() + 60*60*24*$nbJoursAdh;
         if ($postAdh != 5) $finAbo = strtotime("tomorrow", $finAbo) - 1; // Obtient 23:59:59 du dernier jour d'adhésion
