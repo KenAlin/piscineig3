@@ -118,7 +118,35 @@ function infosExemplaireDepuisCodeBarres($cb) {
   else return false;
 }
 
+function infosExemplaireDepuisId($id) {
+  // Renvoie la liste de TOUTES les infos d'un exemplaire d'un jeu depuis son code-barre sous forme d'array ... renvoie false si exemplaire non trouvé
+  $sql = 'SELECT * FROM ludo_exemplaires WHERE id=:id;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
 
+  if (isset($result[0])) {
+    $result = $result[0];
+    return $result;
+  }
+  else return false;
+}
+
+function infosPretDepuisId($id) {
+  // Renvoie la liste de TOUTES les infos d'un pret d'un jeu depuis son id sous forme d'array ... renvoie false si prêt non trouvé
+  $sql = 'SELECT * FROM ludo_emprunts WHERE idEmprunt=:id;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  if (isset($result[0])) {
+    $result = $result[0];
+    return $result;
+  }
+  else return false;
+}
 
 
 ?>

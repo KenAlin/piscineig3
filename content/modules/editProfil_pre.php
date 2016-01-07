@@ -49,7 +49,7 @@
         else if ($postAdh == 1) $nbJoursAdh = 365; // Fin dans 365j
 
         $finAbo = time() + 60*60*24*$nbJoursAdh;
-        if ($postAdh != 5) $finAbo = strtotime("tomorrow", $finAbo) - 1; // Obtient 23:59:59 du dernier jour d'adhésion
+        if ($postAdh != 6) $finAbo = strtotime("tomorrow", $finAbo) - 1; // Obtient 23:59:59 du dernier jour d'adhésion
         $sql = 'UPDATE ludo_utilisateurs SET fin_abo=:fin WHERE id=:iduser;';
         $requete = $bd->prepare($sql);
         $requete->bindValue(':fin', $finAbo, PDO::PARAM_INT);

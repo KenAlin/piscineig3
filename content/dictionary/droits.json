@@ -9,11 +9,12 @@
     "catalogue",
     "jeu",
     "profil",
+    "modifMdp",
     "deconnexion"
   ],
   "admin":[
     "gestionReservations",
-    "gestionPrets", "nouveauPret",
+    "gestionPrets", "nouveauPret", "emprunt",
     "gestionMembres", "creerMembre", "supprMembre", "resetMotDePasse", "editProfil",
     "gestionJeux", "creerJeu", "supprJeu", "editJeu",
     "exemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",

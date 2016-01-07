@@ -52,7 +52,7 @@
 
     // $('.tooltipped').tooltip({delay: 50});
 
-    <?php if ( in_array($getModule, array("catalogue", "gestionMembres")) ) { ?>
+    <?php if ( in_array($getModule, array("catalogue", "gestionMembres", "gestionPrets")) ) { ?>
       /* COPYRIGHT Baptiste Donaux - https://autocomplete-js.com */
       AutoComplete({
           select: function(input, item) {

@@ -51,7 +51,14 @@ function choixCouleur($ch, $shuffle = false) {
   $crypt = substr(sha1($ch), 0, 8);
   $represente = abs(intval($crypt)) % count($couleurs);
   return $couleurs[$represente];
-  //return $represente;
+}
+
+function choixCouleurBool($ch) {
+  // Renvoie une couleur selon la valeur du booléen
+  $couleurs = array("blue", "teal", "green", "purple", "deep-purple", "indigo", "red", "pink", "light-green", "orange", "light-blue", "cyan", "deep-orange", "brown", "blue-grey", "amber");
+
+  if ($ch) return "red";
+  else return "blue";
 }
 
 ?>

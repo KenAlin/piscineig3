@@ -56,8 +56,6 @@
       $infosEx = infosExemplaireDepuisCodeBarres($postCB);
 
       if ($infosEx) {
-        $contexte = 1;
-
         // Cherche si l'exemplaire est déjà emprunté (normalement non)
         $sql = 'SELECT * FROM ludo_emprunts WHERE idExemplaire=:idex AND dateRetour IS NULL;';
         $requete = $bd->prepare($sql);
@@ -69,6 +67,9 @@
           // Oops ! Cet exemplaire est déjà en emprunté ?!
           $codeMessage = "pretCBdejaEnPret";
           $dejaEnPret = true;
+        }
+        else {
+          $contexte = 1;
         }
 
         // On cherche les infos du jeu

@@ -64,7 +64,7 @@ function empruntPossible($infosUser, $infosJeu, $forcage) {
   else {
     // Les ennuis commencent ! On vérifie les deux conditions :
     //    l'adhésion est encore valable
-    //    pretsEnCours < pretsMax OU tentative d'emprunt d'une extension d'un jeu déjà en cours d'emprunt
+    //    ET (pretsEnCours < pretsMax OU tentative d'emprunt d'une extension d'un jeu déjà en cours d'emprunt)
     if ($infosUser["fin_abo"] > time()) {
       $pretsEnCoursMembre = pretsEnCoursMembre($infosUser["pseudo"]);
       $nbPrets = count($pretsEnCoursMembre);

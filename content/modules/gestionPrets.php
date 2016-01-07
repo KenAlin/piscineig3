@@ -11,9 +11,28 @@
 </div>
 
 <div class="row">
+  <div class="col s12 m3 l3 center">
+    <a class="btn blue waves-effect waves-light" href="creerMembre">Nouveau prêt <i class="fa fa-plus-circle"></i></a>
+  </div>
+
+  <div class="input-field col s12 m6 l6 valign-wrapper">
+    <!-- AFFICHAGE BARRE RECHERCHE -->
+    <form class="">
+      <i class="material-icons prefix">search</i>
+      <input id="recherche" type="text" class="validate" autofocus
+        data-autocomplete="content/remote/autoPretCB"
+        data-autocomplete-no-result="Aucun prêt correspondant !"
+        data-autocomplete-param-name="uc"
+        autocomplete="off">
+      <label for="recherche">Chercher par code barre</label>
+    </form>
+  </div>
+</div>
+
+<div class="row">
 <?php foreach($listeEmpruntsEnCours as $emprunts) { ?>
   <div class="col s12 m4">
-    <div class="card <?php echo choixCouleur($emprunts["dateFin"] < time()); ?> lighten-2">
+    <div class="card <?php echo choixCouleurBool($emprunts["dateFin"] < time()); ?> lighten-2">
       <div class="card-content">
         <span class="card-title"><?php echo $emprunts["nom"]; ?></span>
         <ul>
