@@ -36,6 +36,7 @@
                 $requete->bindValue(':param', $idJeuSuppr, PDO::PARAM_INT);
                 $requete->execute();
                 $codeMessage = "supprJeuOK";
+                redirection("catalogue");
               }
               else {
                 $codeMessage = "supprJeuEncoreExemplaires";

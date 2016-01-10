@@ -2,57 +2,36 @@
   // *** INFOS SUR LE MODULE ***
   $titrePage = "Supprimer un exemplaire";
   include_once("content/fonctions/jeux.php");
+  include_once("content/fonctions/prets.php");
 
-  // Le paramètre est l'id du jeu à supprimer
+  // Le paramètre est l'id de l'exemplaire à supprimer
   if ($getParamUn) {
     $idExemplaireSuppr = intval($getParamUn);
 
-    // Obtention du jeu
-    $infosJeu = infosJeuDepuisId($idExemplaireSuppr);
+    // Obtention de l'exemplaire
+    $infosExmpl = infosExemplaireDepuisId($idExemplaireSuppr);
 
-    if ($infosJeu) {
-      // On a obtenu le jeu ! Maintenant, on voudrait bien ses exemplaires ...
-      $listeExemplaires = exemplairesDunJeu($idExemplaireSuppr);
-    }
-    else {
-      $infosJeu = null;
-      $listeExemplaires = false;
-      $codeMessage = "exemplaireInvalide";
-    }
-
-
-    if ($infosJeu) {
-      $nomJeu = $infosJeu["nom"];
+    if ($infosExmpl) {
+      $infosJeu = infosJeuDepuisId($infosExmpl["idJeu"]);
       if ($actionPost == "suppr") {
-        // On arrive depuis le formulaire : on va sécuriser quelques données ...
-        if (isset($_POST["nom"])) {
-          $postNom = trim(htmlentities($_POST["nom"]));
-        } else { $postNom = false; }
 
-        if ($postNom) {
+        // On arrive depuis le formulaire : on va sécuriser quelques données ...
+        if (isset($_POST["confirm"])) {
+          $postConfirm = intval($_POST["confirm"]);
+        } else { $postConfirm = false; }
+
+        if ($postConfirm) {
           // Le formulaire ne semble pas incomplet
-          if ($postNom === $nomJeu) {
-            // On va vérifier que le jeu a des extensions
-            if (extensionsDunJeu($idExemplaireSuppr)) {
-              // Le jeu a d'extension ! On va vérifier les exemplaires
-              if (!exemplairesDunJeu($idExemplaireSuppr)) {
-                // Le jeu a d'exemplaires ! On peut supprimer !!
-                $sql = 'DELETE FROM ludo_exemplaires WHERE id=:param;';
-                $requete = $bd->prepare($sql);
-                $requete->bindValue(':param', $idExemplaireSuppr, PDO::PARAM_INT);
-                $requete->execute();
-                $codeMessage = "supprExemplaireOK";
-              }
-              else {
-                $codeMessage = "supprEmplairePasdeExemplaires";
-              }
-            }
-            else {
-              $codeMessage = "supprExemplairePasdeExtensions";
-            }
-          }
-          else {
-            $codeMessage = "supprExemplaireSecuriteInvalide";
+          if (!pretsEnCoursExemplaire($idExemplaireSuppr)) {
+            // Pas de prêts en cours : on supprime !
+            $sql = 'DELETE FROM ludo_exemplaires WHERE idEx=:param;';
+            $requete = $bd->prepare($sql);
+            $requete->bindValue(':param', $idExemplaireSuppr, PDO::PARAM_INT);
+            $requete->execute();
+            $codeMessage = "supprExemplaireOK";
+            redirection("exemplaires-{$infosJeu['id']}");
+          } else {
+            $codeMessage = "supprExemplairePretsToujoursEnCours";
           }
         }
         else {
@@ -61,14 +40,13 @@
       }
     }
     else {
-      $nomJeu = false;
       $idExemplaireSuppr = false;
       $codeMessage = "supprExemplaireParamInvalide";
     }
   }
   else {
-    $codeMessage = "supprExemplairePasDeParam";
-  $idExemplaireSuppr = false;
+    $codeMessage = "pasDeParametre";
+    $idExemplaireSuppr = false;
     $nomJeu = false;
   }
 

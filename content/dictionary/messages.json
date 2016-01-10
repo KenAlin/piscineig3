@@ -12,6 +12,11 @@
     "alerte"
   ],
 
+  "erreurInconnue":[
+    "Erreur inconnue. On ne sait pas ce qu'il s'est passé ; veuillez réessayer.",
+    "alerte"
+  ],
+
 
   "formLoginMauvaisMdp":[
     "Le mot de passe saisi est invalide. Veuillez réessayer, ou contacter un responsable de la ludothèque pour réinitialiser votre mot de passe.",
@@ -24,7 +29,7 @@
 
 
   "jeuInvalide":[
-    "Vous essayez d'accéder à une page concernant un jeu qui n'existe pas. Paradoxal, n'est-ce pas ?",
+    "Vous essayez d'accéder à une page concernant un jeu qui n'existe pas. Vérifiez que tout est en ordre, ou contactez un responsable de la ludothèque si le problème persiste.",
     "alerte"
   ],
   "profilInvalide":[
@@ -135,10 +140,42 @@
     "Attention : cet exemplaire est considéré comme déjà emprunté. Il est vivement recommandé de d'abord enregistrer le retour de cet exemplaire : <a href=\"gestionPrets\">cliquez ICI</a> !",
     "avertissement"
   ],
+  "pretJeuReserve":[
+    "Le jeu n'est pas empruntable : il y a déjà des réservations prioritaire !.",
+    "alerte"
+  ],
+  "pretAboFini":[
+    "L'adhésion de ce membre est terminée.",
+    "alerte"
+  ],
+  "pretNbPretsMaxAtteint":[
+    "Le membre a atteint son quota de prêts.",
+    "alerte"
+  ],
+  "pretPseudoIntrouvable":[
+    "Erreur : membre introuvable !",
+    "alerte"
+  ],
 
 
 
 
+  "reserverNbReservMaxAtteintPourCeJeu":[
+    "Le jeu n'est pas réservable : il y a déjà trop réservations sur ce jeu !.",
+    "alerte"
+  ],
+  "reserverNbReservAtteint":[
+    "Vous avez atteint votre quota de réservations.",
+    "alerte"
+  ],
+  "reserverAboFiniAvantFinReserv":[
+    "Votre adhésion se termine d'ici peu ; veuillez le renouveller avant de pouvoir réserver.",
+    "alerte"
+  ],
+  "reservationEnregistree":[
+    "La réservation a été enregistrée !",
+    "positif"
+  ],
 
   "debug":[
     "message",

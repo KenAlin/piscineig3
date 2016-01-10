@@ -74,11 +74,6 @@
                     data-autocomplete="content/remote/autoPseudo" data-autocomplete-no-result="Aucun pseudo correspondant !" data-autocomplete-param-name="uc">
                   <label for="formPseudo">Pseudo de l'emprunteur</label>
                 </div>
-                <div class="input-field">
-                  <input type="checkbox" class="filled-in" name="forcePret" value="1" id="formForcePret" <?php if ($postForcePret) echo 'checked="checked"'; ?>>
-                  <label for="formForcePret" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Autorise le prêt même si l'adhésion n'est plus valable ou si le nombre de prêts maximum est dépassé">Forcer le prêt (?)</label>
-                </div>
-                <br>
 
                 <!-- Formulaire 3 : Saisie du nombre de jours d'emprunt possibles -->
                 <div class="input-field">
@@ -87,6 +82,13 @@
                 </div>
 
                 <p>Les emprunts sont de <?php echo $settings["nbJoursPretsDefaut"]; ?> jours par défaut, et d'au maximum <?php echo $settings["nbJoursMaxPrets"]; ?> jours.<br>Les administrateurs de la ludothèque ne sont pas concernés par la limite de jeux.</p>
+
+                <div class="input-field">
+                  <input type="checkbox" class="filled-in" name="forcePret" value="1" id="formForcePret" <?php if ($postForcePret) echo 'checked="checked"'; ?>>
+                  <label for="formForcePret" class="tooltipped" data-position="top" data-delay="50" data-tooltip="Autorise le prêt même si l'adhésion n'est plus valable ou si le nombre de prêts maximum est dépassé">Forcer le prêt (?)</label>
+                </div>
+                <br>
+
               <?php } ?>
 
           </div>

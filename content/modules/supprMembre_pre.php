@@ -36,6 +36,7 @@
             $requete->bindValue(':param', $idUserSuppr, PDO::PARAM_INT);
             $requete->execute();
             $codeMessage = "supprUserOK";
+            redirection("gestionMembres");
           }
           else {
             $codeMessage = "supprUserSecuriteInvalide";

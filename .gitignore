@@ -5,3 +5,4 @@ nbproject/project.properties
 nbproject/project.xml
 extensions.php
 /listing/
+*.DS_Store

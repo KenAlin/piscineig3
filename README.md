@@ -19,17 +19,3 @@ Bienvenue, les nageurs ! Pour contribuer, je vous invite à suivre ces étapes :
 - Une fois que vous avez codé, faites un _pull-request_ vers la branche _master_ de ce dépôt.
 
 Conseil : utilisez l'éditeur [Atom](https://atom.io/) pour coder.
-
-## TODO 
-### Essentiel
-- Fonction de gestion des prêts (à détailler)
-  - Prémices du formulaire d'enregistrement (manque seulement la durée à paramétrer !!)
-
-- Et des réservations aussi ! (à détailler)
-
-### Jeux
-- Modification d'un exemplaire
-- Suppression d'un exemplaire
-  - Ajouter ensuite les tests : prêts ou réservations en cours pour cet exemplaire ?
-
-- Catégories : pages d'ajout/suppression/modification

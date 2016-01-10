@@ -45,6 +45,7 @@
             $requete = $bd->prepare($sql);
             $requete->execute(array(':jeu' => $jeuDemande, ':cb' => $postCodeBarre, ':comment' => $postComment));
             $codeMessage = "formCreerExOK";
+            redirection("exemplaires-{$infosJeu['id']}");
           }
           else {
             // Eeeh ... zut. Exemplaire déjà existant.

@@ -15,6 +15,10 @@
         $sql = 'INSERT INTO  ludo_utilisateurs (pseudo, password, estAdmin, membre_depuis)  VALUES (:pseudo, :passwrd, :admin, :maintenant);';
         $requete = $bd->prepare($sql);
         $requete->execute(array(':pseudo' => $postPseudo, ':passwrd' => password_hash("HomoLudens", PASSWORD_DEFAULT), ':admin' => false, ':maintenant' => time()));
+
+        $nouveauMembre = infosMembreDepuisPseudo($postPseudo);
+
+        redirection("profil-{$nouveauMembre['id']}");
         $codeMessage = "formCreerUserOK";
       }
       else {

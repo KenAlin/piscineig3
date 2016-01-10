@@ -26,7 +26,7 @@
     </a>
   </div>
 
-  <div class="col s12 m4 l4">
+  <div class="col s12 m6">
     <a href="gestionMembres">
       <div class="icon-block">
         <h2 class="center light-blue-text"><i class="fa fa-users"></i></h2>
@@ -35,7 +35,7 @@
     </a>
   </div>
 
-  <div class="col s12 m4 l4">
+  <div class="col s12 m6">
     <a href="gestionReservations">
       <div class="icon-block">
         <h2 class="center light-blue-text"><i class="fa fa-cube"></i></h2>

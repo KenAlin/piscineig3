@@ -41,6 +41,14 @@
       $sql = 'INSERT INTO  ludo_emprunts (dateDebut, dateFin, dateRetour, pseudo, idExemplaire)  VALUES (:debut, :fin, NULL, :pseudo, :exemplaire);';
       $requete = $bd->prepare($sql);
       $requete->execute(array(':debut' => time(), ':fin' => $finPret, ':pseudo' => $postEmprunteur, ':exemplaire' => $exemplaire["idEx"]));
+
+      // Et on enlève la réservation !
+      $sql = 'UPDATE ludo_reservation SET dateEmprunt=:now WHERE pseudo=:pseudo AND idJeu=:id AND dateEmprunt IS NULL;';
+      $requete = $bd->prepare($sql);
+      $requete->execute(array(':now' => time(),
+      ':pseudo' => $postEmprunteur,
+      ':id' => $exemplaire["idJeu"]));
+
       $codeMessage = "formPretOK";
     }
   }
@@ -110,8 +118,17 @@
 
         $empruntPossible = empruntPossible($infosUser, $infosJeu, $postForcePret);
         if ($empruntPossible === true) {
-          $contexte = 2;
-          if ($postDuree > $settings["nbJoursMaxPrets"]) $postDuree = $settings["nbJoursMaxPrets"];
+          // On veut vérifier que les réservations ne bloquent pas !!
+          $empruntNonBloque = empruntNonBloque($infosEx["idJeu"], $postPseudo);
+          if ($empruntNonBloque) {
+            $contexte = 2;
+            if ($postDuree > $settings["nbJoursMaxPrets"]) $postDuree = $settings["nbJoursMaxPrets"];
+          }
+          else {
+            // Erreur ! Trop de reservations
+            $codeMessage = "pretJeuReserve";
+          }
+
         }
         else {
           if ($empruntPossible == "ADHESION_TERMINEE") $codeMessage = "pretAboFini";
@@ -122,7 +139,7 @@
       }
       else {
         // Erreur : pseudo ne correspondant à personne !!
-        $codeMessage = "pretCBpseudoIntrouvable";
+        $codeMessage = "pretPseudoIntrouvable";
       }
     }
   }

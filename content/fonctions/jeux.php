@@ -120,7 +120,7 @@ function infosExemplaireDepuisCodeBarres($cb) {
 
 function infosExemplaireDepuisId($id) {
   // Renvoie la liste de TOUTES les infos d'un exemplaire d'un jeu depuis son code-barre sous forme d'array ... renvoie false si exemplaire non trouvé
-  $sql = 'SELECT * FROM ludo_exemplaires WHERE id=:id;';
+  $sql = 'SELECT * FROM ludo_exemplaires WHERE idEx=:id;';
   $requete = $GLOBALS['bd']->prepare($sql);
   $requete->bindValue(':id', $id, PDO::PARAM_INT);
   $requete->execute();
@@ -146,6 +146,92 @@ function infosPretDepuisId($id) {
     return $result;
   }
   else return false;
+}
+
+function nbResaEnCoursJeu($id) {
+  // Renvoie le nombre de réservations EN COURS d'un jeu, depuis son id
+  $sql = 'SELECT count(*) FROM ludo_reservation WHERE dateFin >= :now AND idJeu=:id;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':now', time(), PDO::PARAM_INT);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $result = $result[0]["count(*)"];
+
+  return $result;
+}
+
+function nbPretsEnCoursJeu($id) {
+  // Renvoie le nombre de prêts EN COURS d'un jeu, depuis son id
+  $sql = 'SELECT count(*) FROM ludo_emprunts AS emp, ludo_exemplaires AS ex, ludo_jeux AS j WHERE emp.dateRetour IS NULL AND emp.idExemplaire = ex.idEx AND ex.idJeu = j.id AND j.id=:id;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $result = $result[0]["count(*)"];
+
+  return $result;
+}
+
+function nbPretsEnCoursNonFinisJeu($id, $nbJours) {
+  // Renvoie le nombre de prêts EN COURS d'un jeu, depuis son id, qui ne seront pas finis dans $nbJours jours
+  $sql = 'SELECT count(*) FROM ludo_emprunts AS emp, ludo_exemplaires AS ex, ludo_jeux AS j WHERE emp.dateRetour IS NULL AND emp.idExemplaire = ex.idEx AND ex.idJeu = j.id AND j.id=:id AND emp.dateFin > :temps;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->bindValue(':temps', time() + $nbJours*3600*24, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $result = $result[0]["count(*)"];
+
+  return $result;
+}
+
+function nbExemplairesJeu($id) {
+  // Renvoie le nombre d'exemplaires d'un jeu, depuis son id
+  $sql = 'SELECT count(*) FROM ludo_exemplaires WHERE idJeu=:id;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $result = $result[0]["count(*)"];
+
+  return $result;
+}
+
+function nbReservationsJeuNonFinies($id, $nbJours) {
+  // Renvoie le nombre de réservations concernant un jeu ($id) qui seront toujours en cours dans $nbJours jours
+  $sql = 'SELECT count(*) FROM ludo_reservation WHERE idJeu=:id AND dateEmprunt IS NULL AND dateFin > :temps;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':id', $id, PDO::PARAM_INT);
+  $requete->bindValue(':temps', time() + $nbJours*3600*24, PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+  $result = $result[0]["count(*)"];
+
+  return $result;
+}
+
+function empruntNonBloque($idJeu, $pseudo) {
+  // Renvoie TRUE si l'emprunt n'est pas bloqué par les réservations, ou si le membre dispose bien d'une réservation pour ce jeu
+
+  // Membre dispose de la réservation du jeu en cours ?
+  $sql = 'SELECT * FROM ludo_reservation WHERE pseudo=:pseudo AND dateFin > :now AND dateEmprunt IS NULL;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':pseudo', $pseudo, PDO::PARAM_INT);
+  $requete->bindValue(':now', time(), PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  if (isset($result[0])) {
+    // C'est bon, il peut emprunter
+    return true;
+  }
+  else {
+    // Emprunt possible : nbExemplairesDispo > nbExemplairesReserves
+    if (nbExemplairesJeu($idJeu) > nbReservationsJeuNonFinies($idJeu, 0)) return true;
+    else return false;
+  }
+  return $result;
 }
 
 

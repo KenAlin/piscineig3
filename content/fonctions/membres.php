@@ -12,6 +12,31 @@ function pretsEnCoursMembre($pseudo) {
   return $result;
 }
 
+function pretsEnRetardMembre($pseudo) {
+  // Renvoie les prêts en retard (peu importe leur date) du membre désigné par son pseudo
+  $sql = 'SELECT * FROM ludo_emprunts WHERE pseudo=:pseudo AND ((dateRetour IS NULL AND dateFin > :now) OR (dateRetour < dateFin));';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':pseudo', $pseudo, PDO::PARAM_INT);
+  $requete->bindValue(':now', time(), PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  return $result;
+}
+
+function reservationsEnCoursMembre($pseudo) {
+  // Renvoie les réservations en cours du membre désigné par son pseudo
+
+  $sql = 'SELECT * FROM ludo_reservation WHERE pseudo=:pseudo AND dateFin > :now AND dateEmprunt IS NULL;';
+  $requete = $GLOBALS['bd']->prepare($sql);
+  $requete->bindValue(':pseudo', $pseudo, PDO::PARAM_INT);
+  $requete->bindValue(':now', time(), PDO::PARAM_INT);
+  $requete->execute();
+  $result = $requete->fetchAll(PDO::FETCH_ASSOC);
+
+  return $result;
+}
+
 function nbPretsEnCoursMembre($pseudo) {
   // Renvoie le nombre de prêts en cours du membre désigné par son pseudo
 

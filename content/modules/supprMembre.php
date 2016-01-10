@@ -4,7 +4,7 @@
     <div class="icon-block">
       <h2 class="center red-text"><i class="fa fa-close"></i></h2>
       <h5 class="center">Supprimer un membre</h5>
-      <p class="light center">Vous vous apprêtez à supprimer un membre. Attention, cette opération est irréversible ! Pour confirmer, saisissez le pseudo du membre (<i><?php echo $pseudoMembre; ?></i>). Cette opération n'est possible que si lel membre n'a pas de prêts ou réservations en cours. ##TODO : TESTER PRETS ET RESERVATIONS##</p>
+      <p class="light center">Vous vous apprêtez à supprimer un membre. Attention, cette opération est irréversible ! Pour confirmer, saisissez le pseudo du membre (<i><?php echo $pseudoMembre; ?></i>). Cette opération n'est possible que si le membre n'a pas de prêts ou réservations en cours.</p>
     </div>
   </div>
   <div class="col s12 m4 l2">&nbsp;</div>

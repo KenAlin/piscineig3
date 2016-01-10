@@ -62,9 +62,12 @@ form.loginForm {
   background-color: #EDC951;
 }
 .message_positif {
-  background-color: rgb(0, 221, 52);
+  background-color: #43a047;
   color: white;
 }
 .autocomplete {
   z-index: 5;
+}
+.separe-after {
+  margin-bottom: 105px;
 }

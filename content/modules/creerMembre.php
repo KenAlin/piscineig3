@@ -4,7 +4,7 @@
     <div class="icon-block">
       <h2 class="center light-blue-text"><i class="fa fa-user-plus"></i></h2>
       <h5 class="center">Créer un membre</h5>
-      <p class="light center">Depuis ce menu, vous pouvez créer un nouveau membre avec son pseudo. Attention : un pseudo est unique, et un pseudo n'appartient qu'à un seul membre.</p>
+      <p class="light center">Depuis ce menu, vous pouvez créer un nouveau membre avec son pseudo. Attention : un pseudo est unique, et un pseudo n'appartient qu'à un seul membre. Le mot de passe par défaut sera "HomoLudens", et pourra être changé par l'adhérent ensuite.</p>
     </div>
   </div>
   <div class="col s12 m4 l2">&nbsp;</div>

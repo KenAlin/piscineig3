@@ -1,6 +1,6 @@
 {
   "all":[
-    "about"
+    "about", "prez"
   ],
   "guests" :[
     "login"
@@ -9,7 +9,7 @@
     "catalogue",
     "jeu",
     "profil",
-    "modifMdp",
+    "editMdp",
     "deconnexion"
   ],
   "admin":[
@@ -18,7 +18,7 @@
     "gestionMembres", "creerMembre", "supprMembre", "resetMotDePasse", "editProfil",
     "gestionJeux", "creerJeu", "supprJeu", "editJeu",
     "exemplaires", "creerExemplaire", "supprExemplaire", "editExemplaire",
-    "admin"
+    "admin", "reserver"
   ],
   "nonAdmin":[
     "reserver"

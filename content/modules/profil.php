@@ -14,20 +14,28 @@
           <li><i class="fa fa-envelope-o"></i> <b>Mail de contact :</b> <?php echo $profil["mail"]; ?></li>
           <li><i class="fa fa-phone"></i> <b>Téléphone :</b> <?php echo $profil["telephone"]; ?></li>
           <li><i class="fa fa-ticket"></i> <b>Adhérent jusqu'au </b> <?php echo strftime("%A %e %B %Y", $profil["fin_abo"]); ?></li>
+          <?php if($nbPretsRetard > 0) echo "<br><li class=\"red-text text-darken-2\">{$nbPretsRetard} prêt(s) en retard cumulé !</li>"; ?>
         </ul>
       </div>
     </div>
   </div>
 
   <div class="col s12 m12 l5">
-    <div class="card light-blue">
+    <div class="card light-blue lighten-2">
       <div class="card-content">
         <span class="card-title">Prêt en cours</span>
-        <p><?php //if ($exemplaire["idEx"] == $emprunts["idExemplaire"]) echo $exemplaire["Nom"]; else echo "Pas de prêt en cours"?>Liste des prêts en cours ici.</p>
-          <!-- Test certainement ridicule de php de ma part ^^ -->
+        <ul>
+          <?php foreach ($listePrets as $pret) { ?>
+            <li><?php echo $pret["nom"]; ?> pour le <?php echo strftime("%A %e %B %Y", $pret["dateFin"]); ?></li>
+          <?php } ?>
+        </ul>
 
         <span class="card-title">Réservation en cours</span>
-        <p>Liste des réservations en cours ici.</p>
+        <ul>
+          <?php foreach ($listeResa as $resa) { ?>
+            <li><?php echo $resa["nom"]; ?>, d'ici le <?php echo strftime("%A %e %B %Y", $resa["dateFin"]); ?></li>
+          <?php } ?>
+        </ul>
       </div>
       <div class="card-action">
         <?php if ($estAdmin) { ?>

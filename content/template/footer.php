@@ -6,20 +6,21 @@
       </div>
       <div class="col s12 l4">
         <h5 class="white-text">Homo Ludens Associés</h5>
-        <p class="grey-text text-lighten-4">Logiciel de gestion en ligne de loduthèque.</p>
+        <p class="grey-text text-lighten-4">Logiciel de gestion en ligne de ludothèque.</p>
       </div>
       <div class="col s12 l5">
         <h5 class="white-text">Liens</h5>
         <ul>
           <li><a class="grey-text text-lighten-3" href="http://homoludensassocies.fr/v2/">Accueil Homo Ludens Associés</a></li>
           <li><a class="grey-text text-lighten-3" href="https://github.com/KenAlin/piscineig3">Github</a></li>
+          <li><a class="grey-text text-lighten-3" href="about">A propos</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="footer-copyright">
     <div class="container">
-    Un projet piscine IG3 (v0.0.2)
+    Un projet piscine IG3 (v0.9)
     </div>
   </div>
 </footer>

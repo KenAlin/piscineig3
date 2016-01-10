@@ -12,7 +12,7 @@
 
 <div class="row">
   <div class="col s12 m3 l3 center">
-    <a class="btn blue waves-effect waves-light" href="creerMembre">Nouveau prêt <i class="fa fa-plus-circle"></i></a>
+    <a class="btn blue waves-effect waves-light" href="nouveauPret">Nouveau prêt <i class="fa fa-plus-circle"></i></a>
   </div>
 
   <div class="input-field col s12 m6 l6 valign-wrapper">
@@ -30,20 +30,22 @@
 </div>
 
 <div class="row">
-<?php foreach($listeEmpruntsEnCours as $emprunts) { ?>
+<?php foreach($listeEmpruntsEnCours as $emprunt) { ?>
   <div class="col s12 m4">
-    <div class="card <?php echo choixCouleurBool($emprunts["dateFin"] < time()); ?> lighten-2">
+    <div class="card <?php echo choixCouleurBool($emprunt["dateFin"] < time()); ?> lighten-2">
       <div class="card-content">
-        <span class="card-title"><?php echo $emprunts["nom"]; ?></span>
+        <span class="card-title"><?php echo $emprunt["nom"]; ?></span>
         <ul>
-          <li><b>Emprunté par</b> <?php echo $emprunts["pseudo"]; ?> le <?php echo strftime("%A %e %B %Y", $emprunts["dateDebut"]); ?></li>
-          <li><b>Date de retour prévue : </b> <?php echo strftime("%A %e %B %Y", $emprunts["dateFin"]); ?></li>
-          <?php if($emprunts["dateFin"] < time()) echo "<li class=\"blue-text text-darken-2\"><b>Prêt en retard !</b></li>"; ?>
+          <li><b>Emprunté par</b> <?php echo $emprunt["pseudo"]; ?> le <?php echo strftime("%A %e %B %Y", $emprunt["dateDebut"]); ?></li>
+          <li><b>Date de retour prévue : </b> <?php echo strftime("%A %e %B %Y", $emprunt["dateFin"]); ?></li>
+          <?php if($emprunt["dateFin"] < time()) echo "<li class=\"blue-text text-darken-2\"><b>Prêt en retard !</b></li>"; ?>
+          <br>
+          <li><b>Code barre :</b> <?php echo $emprunt["code_barre"]; ?></li>
         </ul>
 
       </div>
       <div class="card-action">
-        <a href="emprunt-<?php echo $emprunts["idEmprunt"]; ?>" class="white-text accent-4">Informations emprunt</a>
+        <a href="emprunt-<?php echo $emprunt["idEmprunt"]; ?>" class="white-text accent-4">Informations emprunt</a>
       </div>
     </div>
   </div>

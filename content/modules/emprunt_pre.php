@@ -11,7 +11,7 @@
     $pretDemande = false;
   }
 
-  // Obtention des infos du membre
+  // Obtention des infos du prêt
   $pret = infosPretDepuisId($pretDemande);
 
   if (!$pret) {
@@ -22,6 +22,31 @@
   }
   else {
     $emprunteur = infosMembreDepuisPseudo($pret["pseudo"]);
+
+    // Est-ce qu'on vient de confirmer son retour ?
+    if ($actionPost == "retour") {
+      if (isset($_POST["retourOk"])) {
+        $postConfirm = intval($_POST["retourOk"]);
+      } else { $postConfirm = false; }
+
+      if ($postConfirm) {
+        // UPDATE !
+        $sql = 'UPDATE ludo_emprunts SET dateRetour = :dateR WHERE idEmprunt = :id AND dateRetour IS NULL ;';
+        $requete = $bd->prepare($sql);
+        $requete->bindValue(':id', $pret["idEmprunt"], PDO::PARAM_INT);
+        $requete->bindValue(':dateR', time(), PDO::PARAM_INT);
+        $requete->execute();
+        $codeMessage = "retourPretOK";
+
+
+        $pret = infosPretDepuisId($pretDemande);
+      }
+      else {
+        $codeMessage = "retourPretCaseNonCochee";
+      }
+
+
+    }
 
     // Obtention du nom du jeu
     $sql = 'SELECT
@@ -35,7 +60,13 @@
     $requete->bindValue(':id', $pret["idExemplaire"], PDO::PARAM_INT);
     $requete->execute();
     $infosJeu = $requete->fetchAll(PDO::FETCH_ASSOC);
-    $infosJeu = $infosJeu[0];
+    if (isset($infosJeu[0])) {
+      $infosJeu = $infosJeu[0];
+    }
+    else {
+      // L'exemplaire a sans douté été supprimé !
+      $infosJeu = array("nom" => "<i>jeu supprimé</i>", "id" => 0);
+    }
   }
 
 
