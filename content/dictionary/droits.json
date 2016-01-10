@@ -1,6 +1,7 @@
 {
   "all":[
-    "about", "prez"
+    "about", "prez",
+    "deconnexion"
   ],
   "guests" :[
     "login"
@@ -9,8 +10,7 @@
     "catalogue",
     "jeu",
     "profil",
-    "editMdp",
-    "deconnexion"
+    "editMdp"
   ],
   "admin":[
     "gestionReservations",

@@ -2,7 +2,7 @@
 Par des étudiants de Polytech Montpellier en Informatique et Gestion (IG), année 2015-2016.
 
 ## Tester
-C'est par là : [http://wave-it.fr/beta/piscine/master/](http://wave-it.fr/beta/piscine/master/) (la version sur le site peut être différente de celle sur Github, car les mises à jour s'y font manuellement).
+C'est par là : [http://piscine-ig3.wave-it.fr/](http://piscine-ig3.wave-it.fr/) (la version sur le site peut être différente de celle sur Github, car les mises à jour s'y font manuellement).
 
 ## Contribuer
 Bienvenue, les nageurs ! Pour contribuer, je vous invite à suivre ces étapes :

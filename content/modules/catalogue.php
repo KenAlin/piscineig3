@@ -45,7 +45,7 @@
 <div class="row">
 <?php foreach($listeJeux as $jeu) { ?>
   <div class="col s12 m4">
-    <div class="card <?php echo choixCouleur($jeu["nom"].$jeu["année"]); ?> lighten-2">
+    <div class="card <?php echo choixCouleur($jeu["cat"]); ?> lighten-2">
       <div class="card-content">
         <span class="card-title"><?php echo $jeu["nom"]; ?></span>
         <?php if(strlen($jeu["description"]) > 200) $suffixe_desc = " [...]"; else $suffixe_desc = ""; ?>

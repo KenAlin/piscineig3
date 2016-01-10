@@ -48,7 +48,7 @@ function choixCouleur($ch, $shuffle = false) {
     shuffle($couleurs);
   }
 
-  $crypt = substr(sha1($ch), 0, 8);
+  $crypt = $ch;
   $represente = abs(intval($crypt)) % count($couleurs);
   return $couleurs[$represente];
 }

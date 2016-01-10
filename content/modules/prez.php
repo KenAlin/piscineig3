@@ -24,13 +24,12 @@
   <div class="col s12 m4 l2">&nbsp;</div>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col s12 m3 l3 center">
     &nbsp;
   </div>
 
   <div class="input-field col s12 m6 l6 valign-wrapper">
-    <!-- AFFICHAGE BARRE CB -->
     <form action="prez" method="post">
       <input type="hidden" name="action" value="ask">
       <i class="material-icons prefix">search</i>
@@ -39,6 +38,6 @@
       <button class="btn waves-effect waves-light" type="submit">Poser !</button>
     </form>
   </div>
-</div>
+</div> -->
 
 <?php include("content/prez/pages/{$nomPagePrez}.php"); ?>
