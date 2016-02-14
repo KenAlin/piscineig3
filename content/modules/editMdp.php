@@ -12,16 +12,18 @@
 </div>
 
 <div class="row">
-  <form action="editMdp" method="post">
+  <form action="editMdp-<?php echo $idMembreMdpAModifier; ?>" method="post">
     <input type="hidden" name="action" value="edit">
     <div class="col s12">
       <div class="card amber lighten-4">
           <div class="card-content">
             <span class="card-title">Modifier le mot de passe</span>
-            <div class="input-field">
-              <input id="formAncienMdp" type="password" name="ancienMdp">
-              <label for="formAncienMdp">Mot de passe actuel</label>
-            </div>
+            <?php if ($modifieSonPassword) { ?>
+              <div class="input-field">
+                <input id="formAncienMdp" type="password" name="ancienMdp">
+                <label for="formAncienMdp">Mot de passe actuel</label>
+              </div>
+            <?php } ?>
             <div class="input-field">
               <input id="formNouveauMdp" type="password" name="nouveauMdp">
               <label for="formNouveauMdp">Nouveau mot de passe</label>

@@ -80,6 +80,7 @@
               <a class="green-text text-darken-3" href="reserver-<?php echo $ext["id"];?>">Réserver</a>
             <?php } ?>
             <?php if ($estAdmin) { ?>
+              <a class="green-text text-darken-3" href="exemplaires-<?php echo $ext["id"]; ?>">Gestion des exemplaires</a>
               <a class="green-text text-darken-3" href="editJeu-<?php echo $ext["id"]; ?>">Modifier la fiche</a>
               <a class="green-text text-darken-3" href="supprJeu-<?php echo $ext["id"]; ?>">Supprimer l'extension</a>
             <?php } ?>

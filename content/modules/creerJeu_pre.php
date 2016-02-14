@@ -59,6 +59,7 @@
         $requete = $bd->prepare($sql);
         $requete->execute(array(':nom' => $postNom, ':descr' => $postDesc,':cat' => 0,':annee' => $postAnnee,':editeur' => $postEditeur,':age' => $postAge,':nbj' => $postNbJ,':parent' => $parentNouvJeu,));
         $codeMessage = "formCreerJeuOK";
+        if ($parentNouvJeu >= 1) redirection("jeu-{$parentNouvJeu}");
       }
       else {
         // Eeeh ... zut. Jeu déjà existant.

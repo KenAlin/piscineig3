@@ -16,6 +16,32 @@
     "Erreur inconnue. On ne sait pas ce qu'il s'est passé ; veuillez réessayer.",
     "alerte"
   ],
+  "formPretOK":[
+    "L'emprunt a été enregistré !",
+    "positif"
+  ],
+
+  "retourPretOK":[
+    "Le prêt a été correctement rendu.",
+    "positif"
+  ],
+  "retourPretCaseNonCochee":[
+    "Vous devez cocher la case pour confirmer le retour !",
+    "avertissement"
+  ],
+
+  "modifMdpMauvaiseConfirm":[
+    "Le nouveau mot de passe saisi et la confirmation ne correspondent pas !",
+    "alerte"
+  ],
+  "modifMdpAncienMdpInvalide":[
+    "Le mot de passe actuel saisi ne correspond pas à votre mot de passe actuel réel. Veuillez réessayer.",
+    "alerte"
+  ],
+  "modifMdpOK":[
+    "Le mot de passe a été modifié !",
+    "positif"
+  ],
 
 
   "formLoginMauvaisMdp":[

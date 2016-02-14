@@ -59,7 +59,7 @@
           <td><?php echo $membre["prenom"]; ?></td>
           <td>
             <a class="tooltipped" href="profil-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Aperçu du profil"><i class="fa fa-user"></i></a>
-            <a class="tooltipped" href="resetMotDePasse-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Réinitialiser le mot de passe"><i class="fa fa-key"></i></a>
+            <a class="tooltipped" href="editMdp-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Modifier le mot de passe"><i class="fa fa-key"></i></a>
             <a class="tooltipped" href="supprMembre-<?php echo $membre["id"]; ?>" data-position="top" data-delay="50" data-tooltip="Supprimer le membre"><i class="fa fa-close"></i></a>
           </td>
         </tr>

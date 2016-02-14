@@ -22,14 +22,13 @@ function afficheMenu($co, $admin) {
   if ($co) {
     print '<li><a href="catalogue">Catalogue de jeux</a></li>';
     if ($admin) {
-      print '<li><a href="admin">Accès admin</a><li>
+      print '<li><a href="admin">Administration</a><li>
       <li><a href="gestionMembres">Membres</a><li>
       <li><a href="gestionReservations">Réservations</a><li>
-      <li><a href="gestionPrets">Prêts</a><li>';
+      <li><a href="gestionPrets">Emprunts</a><li>';
     }
     else {
-      print '<li><a href="reserver">Réserver</a><li>
-      <li><a href="profil">Mon profil</a><li>';
+      print '<li><a href="profil">Mon profil</a><li>';
     }
     print '<li><a href="deconnexion">Se déconnecter</a><li>';
   }
